@@ -1,8 +1,7 @@
 // 질문 데이터
 const questions = [
     "끝없는 이자와 독촉, 지치지 않으셨나요?",
-    "내 상황에서도 빚을 줄일 수 있을지, 궁금하지 않으세요?",
-    "우리와 함께 빚 걱정 없는 내일을 만들어가실래요?"
+    "내 상황에 맞는 변제 방법, 궁금하지 않으세요?"
 ];
 
         // 결과 메시지
@@ -31,9 +30,9 @@ function init() {
     resultCard.classList.add('hidden');
     document.getElementById('serviceSelection').classList.add('hidden');
     // 프로그레스바 초기 설정
-    progress.style.width = '33.33%';
+    progress.style.width = '50%';
     // 카운터 초기 설정
-    questionCounter.textContent = '1 / 3';
+    questionCounter.textContent = '1 / 2';
 }
 
 // 질문 업데이트
@@ -123,12 +122,12 @@ function restartQuiz() {
 
 // 서비스 선택
 function selectService(serviceType) {
-    if (serviceType === 'debtRelief') {
-        alert('나의 탕감액 진단 서비스로 이동합니다!');
-        // 여기에 실제 탕감액 진단 페이지로 이동하는 로직 추가
-    } else if (serviceType === 'expertConsultation') {
+    if (serviceType === 'expertConsultation') {
         alert('전문가 상담 서비스로 이동합니다!');
         // 여기에 실제 전문가 상담 페이지로 이동하는 로직 추가
+    } else if (serviceType === 'debtRelief') {
+        alert('나의 탕감액 진단 서비스로 이동합니다!');
+        // 여기에 실제 탕감액 진단 페이지로 이동하는 로직 추가
     }
 }
 
@@ -143,6 +142,10 @@ function showServiceSelection() {
     const serviceSelection = document.getElementById('serviceSelection');
     serviceSelection.classList.remove('hidden');
     serviceSelection.classList.add('fade-in');
+    
+    // 헤더 전환
+    document.querySelector('.main-header').classList.add('hidden');
+    document.querySelector('.service-header').classList.remove('hidden');
 }
 
 // 페이지 로드 시 초기화
@@ -174,11 +177,8 @@ document.querySelectorAll('.btn').forEach(btn => {
 
 // 로고 클릭 처리
 function handleLogoClick() {
-    // 서비스 선택 화면에서는 현답 URL로 이동
-    if (!document.getElementById('serviceSelection').classList.contains('hidden')) {
-        window.location.href = 'https://hyundap.com/';
-    } else {
-        // 그 외의 화면에서는 서비스 선택 화면으로 이동
+    // 서비스 선택 화면이 아닐 때만 클릭 이벤트 처리
+    if (document.getElementById('serviceSelection').classList.contains('hidden')) {
         showServiceSelection();
     }
 }

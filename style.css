@@ -116,6 +116,49 @@ body::before {
     background-size: 24px;
 }
 
+/* 서비스 헤더 스타일 */
+.service-header .logo::after {
+    display: none !important;
+}
+
+.service-header {
+    display: none;
+}
+
+.service-header .logo {
+    cursor: default !important;
+    pointer-events: none;
+    transition: none !important;
+}
+
+.service-header .logo:hover {
+    transform: none !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.06),
+        0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.service-header .logo:active {
+    transform: none !important;
+}
+
+.service-header .logo-main:hover {
+    transform: none !important;
+}
+
+.service-header.hidden {
+    display: none !important;
+}
+
+.service-header:not(.hidden) {
+    display: block !important;
+    margin-top: 70px;  /* 서비스 페이지 헤더 위치 조정 */
+}
+
+.main-header.hidden {
+    display: none !important;
+}
+
 .logo:hover {
     transform: translateY(-2px);
     box-shadow: 
@@ -1045,7 +1088,7 @@ body::before {
 /* 법무법인 현담 링크 스타일 */
 .law-firm-link {
     width: 100%;
-    margin-top: 35px;
+    margin-top: 5px;  /* 15px에서 5px로 줄여서 더 위로 올림 */
     padding: 0 20px 10px;
 }
 

@@ -9,8 +9,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
+    <!-- 메인 페이지 헤더 -->
+    <div class="header main-header">
         <div class="logo" onclick="handleLogoClick()">
+            <div class="logo-wrapper">
+                <div class="subtitle">새로운 시작을 위한 <span class="highlight">채무조정</span> 파트너</div>
+                <div class="logo-main">
+                    <div class="logo-icon">
+                        <div class="logo-circle"></div>
+                        <div class="logo-text">H</div>
+                    </div>
+                    <h1>현생</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 서비스 페이지 헤더 -->
+    <div class="header service-header hidden">
+        <div class="logo">
             <div class="logo-wrapper">
                 <div class="subtitle">새로운 시작을 위한 <span class="highlight">채무조정</span> 파트너</div>
                 <div class="logo-main">
@@ -45,19 +62,6 @@
         
         <div class="service-selection hidden" id="serviceSelection">
             <div class="service-container">
-                <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
-                    <div class="service-icon">
-                        <div class="icon-circle">
-                            <span class="material-icons">savings</span>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>나의 탕감액은?</h3>
-                        <p>자가 진단으로 나에게 맞는 회생 계획 확인</p>
-                    </div>
-                    <span class="material-icons arrow-icon">arrow_forward</span>
-                </div>
-                
                 <div class="service-card" id="expertConsultationCard" onclick="selectService('expertConsultation')">
                     <div class="service-icon">
                         <div class="icon-circle">
@@ -67,6 +71,19 @@
                     <div class="service-content">
                         <h3>전문가 티타임</h3>
                         <p>채무 고민, 전문가와 편하게 이야기해보세요</p>
+                    </div>
+                    <span class="material-icons arrow-icon">arrow_forward</span>
+                </div>
+                
+                <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
+                    <div class="service-icon">
+                        <div class="icon-circle">
+                            <span class="material-icons">savings</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>셀프 자가진단</h3>
+                        <p>자가 진단으로 나에게 맞는 회생 계획 확인</p>
                     </div>
                     <span class="material-icons arrow-icon">arrow_forward</span>
                 </div>
