@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <title>현생 - 빚 걱정 해결 솔루션</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo" onclick="handleLogoClick()">
+            <div class="logo-wrapper">
+                <div class="subtitle">새로운 시작을 위한 <span class="highlight">채무조정</span> 파트너</div>
+                <div class="logo-main">
+                    <div class="logo-icon">
+                        <div class="logo-circle"></div>
+                        <div class="logo-text">H</div>
+                    </div>
+                    <h1>현생</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="question-card" id="questionCard">
+            <div class="question-text" id="questionText">
+                끝없는 이자와 독촉, 지치지 않으셨나요?
+            </div>
+            <div class="button-container">
+                <button class="btn btn-yes" onclick="handleAnswer(true)">Yes</button>
+                <button class="btn btn-no" onclick="handleAnswer(false)">No</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <div class="question-counter" id="questionCounter">1 / 5</div>
+        </div>
+        
+        <div class="result-card hidden" id="resultCard">
+            <div class="result-text" id="resultText"></div>
+            <button class="btn btn-continue" onclick="showServiceSelection()">전문가와 상담하기</button>
+        </div>
+        
+        <div class="service-selection hidden" id="serviceSelection">
+            <div class="service-container">
+                <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
+                    <div class="service-icon">
+                        <div class="icon-circle">
+                            <span class="material-icons">savings</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>나의 탕감액은?</h3>
+                        <p>자가 진단으로 나에게 맞는 회생 계획 확인</p>
+                    </div>
+                    <span class="material-icons arrow-icon">arrow_forward</span>
+                </div>
+                
+                <div class="service-card" id="expertConsultationCard" onclick="selectService('expertConsultation')">
+                    <div class="service-icon">
+                        <div class="icon-circle">
+                            <span class="material-icons">contact_support</span>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>전문가 티타임</h3>
+                        <p>채무 고민, 전문가와 편하게 이야기해보세요</p>
+                    </div>
+                    <span class="material-icons arrow-icon">arrow_forward</span>
+                </div>
+            </div>
+            
+            <div class="law-firm-link">
+                <a href="https://hyundap.com/" target="_blank" class="law-firm-btn">
+                    <div class="law-firm-icon">
+                        <div class="scales">
+                            <div class="scale-left"></div>
+                            <div class="scale-right"></div>
+                            <div class="scale-base"></div>
+                        </div>
+                    </div>
+                    <div class="law-firm-content">
+                        <h4>법무법인 현답</h4>
+                        <p>전문적인 개인회생 서비스</p>
+                    </div>
+                    <div class="external-link-icon">↗</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
