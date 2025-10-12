@@ -1166,8 +1166,7 @@ body::before {
 }
 
 .question-card:focus-within, .result-card:focus-within {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
+    outline: none;
 }
 
 .question-text.typing {
