@@ -39,7 +39,12 @@
                 </div>
             </div>
         </div>
+        <div class="solution-text">
+            <p>당신을 위한 맞춤 채무조정 솔루션, 지금 바로 확인해보세요</p>
+        </div>
     </div>
+    <div class="background-image first-question"></div>
+    <div class="background-image second-question"></div>
     <div class="container">
             <div class="question-card" id="questionCard">
             <div class="question-text" id="questionText">
@@ -60,52 +65,258 @@
             <button class="btn btn-continue" onclick="showServiceSelection()">전문가와 상담하기</button>
         </div>
         
-        <div class="service-selection hidden" id="serviceSelection">
-            <div class="service-container">
-                <div class="service-card" id="expertConsultationCard" onclick="selectService('expertConsultation')">
-                    <div class="service-icon">
-                        <div class="icon-circle">
-                            <span class="material-icons">contact_support</span>
-                        </div>
+    </div>
+    
+    <div class="service-selection hidden" id="serviceSelection">
+        <div class="service-container">
+            <div class="service-card" id="expertConsultationCard" onclick="selectService('expertConsultation')">
+                <div class="service-icon">
+                    <div class="icon-circle">
+                        <span class="material-icons">contact_support</span>
                     </div>
-                    <div class="service-content">
-                        <h3>전문가 티타임</h3>
-                        <p>채무 고민, 전문가와 편하게 이야기해보세요</p>
-                    </div>
-                    <span class="material-icons arrow-icon">arrow_forward</span>
                 </div>
-                
-                <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
-                    <div class="service-icon">
-                        <div class="icon-circle">
-                            <span class="material-icons">savings</span>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>셀프 자가진단</h3>
-                        <p>자가 진단으로 나에게 맞는 회생 계획 확인</p>
-                    </div>
-                    <span class="material-icons arrow-icon">arrow_forward</span>
+                <div class="service-content">
+                    <h3>전문가 티타임</h3>
+                    <p>채무 고민, 전문가와 편하게 이야기해보세요</p>
                 </div>
+                <span class="material-icons arrow-icon">arrow_forward</span>
             </div>
             
-            <div class="law-firm-link">
-                <a href="https://hyundap.com/" target="_blank" class="law-firm-btn">
-                    <div class="law-firm-icon">
-                        <div class="scales">
-                            <div class="scale-left"></div>
-                            <div class="scale-right"></div>
-                            <div class="scale-base"></div>
-                        </div>
+            <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
+                <div class="service-icon">
+                    <div class="icon-circle">
+                        <span class="material-icons">savings</span>
                     </div>
-                    <div class="law-firm-content">
-                        <h4>법무법인 현답</h4>
-                        <p>전문적인 개인회생 서비스</p>
-                    </div>
-                    <div class="external-link-icon">↗</div>
-                </a>
+                </div>
+                <div class="service-content">
+                    <h3>셀프 자가진단</h3>
+                    <p>자가 진단으로 나에게 맞는 회생 계획 확인</p>
+                </div>
+                <span class="material-icons arrow-icon">arrow_forward</span>
             </div>
         </div>
+        
+        <div class="law-firm-link">
+            <a href="https://hyundap.com/" target="_blank" class="law-firm-btn">
+                <div class="law-firm-icon">
+                    <div class="scales">
+                        <div class="scale-left"></div>
+                        <div class="scale-right"></div>
+                        <div class="scale-base"></div>
+                    </div>
+                </div>
+                <div class="law-firm-content">
+                    <h4>법무법인 현답</h4>
+                    <p>전문적인 개인회생 서비스</p>
+                </div>
+                <div class="external-link-icon">↗</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 변화를 만든 사람들 섹션 -->
+    <div class="success-stories" id="successStories">
+        <h2 class="section-title">변화를 만든 사람들</h2>
+        <div class="stories-grid">
+            <!-- Story 1 -->
+            <div class="story-card">
+                <div class="story-header">고객 1</div>
+                <div class="story-content">
+                    <div class="video-wrapper">
+                        <button class="video-thumb" data-video-id="ysz5S6PUM-U" aria-label="고객 1 영상 재생" title="영상 재생">
+                            <img src="https://img.youtube.com/vi/ysz5S6PUM-U/hqdefault.jpg" alt="고객 1 인터뷰 썸네일">
+                            <span class="play-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p class="success-quote">"서비스 덕분에 업무 효율이 크게 향상되었어요!"</p>
+                </div>
+            </div>
+            <!-- Story 2 -->
+            <div class="story-card">
+                <div class="story-header">고객 2</div>
+                <div class="story-content">
+                    <div class="video-wrapper">
+                        <button class="video-thumb" data-video-id="ScMzIvxBSi4" aria-label="고객 2 영상 재생" title="영상 재생">
+                            <img src="https://img.youtube.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="고객 2 인터뷰 썸네일">
+                            <span class="play-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p class="success-quote">"새로운 시작을 찾을 수 있었어요."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추심정지 주요 효과 섹션 -->
+    <div class="stay-effects">
+        <h2 class="section-title">추심정지 주요 효과</h2>
+        <div class="effects-timeline">
+            <div class="timeline-track">
+                <!-- 즉시 독촉 중단 -->
+                <div class="effect-step">
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <span class="material-icons">block</span>
+                        </div>
+                        <div class="effect-content">
+                            <h3>즉시 독촉 중단</h3>
+                            <p>채권추심자의 전화, 문자, 방문 등 모든 추심행위가 즉시 중단됩니다</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 압류 해제 -->
+                <div class="effect-step">
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <span class="material-icons">lock_open</span>
+                        </div>
+                        <div class="effect-content">
+                            <h3>압류 해제</h3>
+                            <p>급여나 예금 등에 대한 압류가 해제되어 정상적인 경제활동이 가능해집니다</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 생활 안정 -->
+                <div class="effect-step">
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <span class="material-icons">home</span>
+                        </div>
+                        <div class="effect-content">
+                            <h3>생활 안정</h3>
+                            <p>독촉과 추심의 부담에서 벗어나 안정적인 일상생활로 복귀할 수 있습니다</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 법적 보호 -->
+                <div class="effect-step">
+                    <div class="effect-card">
+                        <div class="effect-icon">
+                            <span class="material-icons">gavel</span>
+                        </div>
+                        <div class="effect-content">
+                            <h3>법적 보호</h3>
+                            <p>법원의 보호 아래 채권자로부터 안전하게 보호받을 수 있습니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 진행 과정 섹션 -->
+    <div class="progress-flow">
+        <h2 class="section-title">진행 과정</h2>
+        <div class="flow-container">
+            <div class="flow-step">
+                <div class="flow-number">01</div>
+                <div class="flow-icon">
+                    <span class="material-icons">description</span>
+                </div>
+                <h3>상담신청</h3>
+                <div class="flow-arrow">
+                    <span class="material-icons">chevron_right</span>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">02</div>
+                <div class="flow-icon">
+                    <span class="material-icons">search</span>
+                </div>
+                <h3>개인상황 진단</h3>
+                <div class="flow-arrow">
+                    <span class="material-icons">chevron_right</span>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">03</div>
+                <div class="flow-icon">
+                    <span class="material-icons">edit_document</span>
+                </div>
+                <h3>신청서 작성및접수</h3>
+                <div class="flow-arrow">
+                    <span class="material-icons">chevron_right</span>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-number">04</div>
+                <div class="flow-icon">
+                    <span class="material-icons">gavel</span>
+                </div>
+                <h3>추심정지 명령 발령</h3>
+            </div>
+        </div>
+        <p class="flow-note">추심이 걱정될 때, 개최된 변제를 진행하면 걱부터 새로운 탈출을 영업할 수 있습니다.</p>
+    </div>
+
+    <!-- 함께 일할 전문가 섹션 -->
+    <div class="experts-section">
+        <h2 class="section-title">함께할 전문가</h2>
+        <div class="experts-grid">
+            <div class="expert-card">
+                <div class="expert-initial">김</div>
+                <div class="expert-info">
+                    <h3>김민수 변호사</h3>
+                    <p class="expert-field">형사 전문</p>
+                    <p class="expert-firm">현생 법률파트너스</p>
+                </div>
+                <button class="expert-more" aria-label="자세히 보기">
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-initial">이</div>
+                <div class="expert-info">
+                    <h3>이서현 변호사</h3>
+                    <p class="expert-field">민사 전문</p>
+                    <p class="expert-firm">현생 법률파트너스</p>
+                </div>
+                <button class="expert-more" aria-label="자세히 보기">
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-initial">박</div>
+                <div class="expert-info">
+                    <h3>박지훈 변호사</h3>
+                    <p class="expert-field">가사 전문</p>
+                    <p class="expert-firm">현생 법률파트너스</p>
+                </div>
+                <button class="expert-more" aria-label="자세히 보기">
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-initial">최</div>
+                <div class="expert-info">
+                    <h3>최유리 변호사</h3>
+                    <p class="expert-field">상사 전문</p>
+                    <p class="expert-firm">현생 법률파트너스</p>
+                </div>
+                <button class="expert-more" aria-label="자세히 보기">
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 플로팅 액션 버튼들 -->
+    <div class="floating-actions">
+        <button class="floating-btn phone-btn" onclick="window.open('tel:1588-0000', '_self')" aria-label="전화 상담">
+            <span class="material-icons">phone</span>
+        </button>
+        <button class="floating-btn hand-btn" onclick="window.open('https://hyundap.com/', '_blank')" aria-label="온라인 상담">
+            <span class="material-icons">support_agent</span>
+        </button>
     </div>
 
     <script src="script.js"></script>

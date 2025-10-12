@@ -1,3 +1,9 @@
+:root {
+    --vw-full: 100vw;
+    --content-max-width: 1200px;
+    --content-padding: 20px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,23 +12,54 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: 
-        radial-gradient(circle at center, rgba(80,145,255,0.08) 0%, transparent 70%),
-        linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%);
+    background: linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     color: #334155;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-/* 사이드 글귀 스타일링 */
+/* 배경 이미지 스타일링 */
+.background-image {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(8px);
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+    z-index: -2;
+}
 
+.first-question {
+    left: 40px;
+    top: 60%;
+    transform: translateY(-50%);
+    background-image: url('young man with closed eyes working on laptop and holding head.png');
+    opacity: 1;
+}
 
-/* 모바일에서는 사이드 글귀 숨기기 */
+.second-question {
+    right: 20px;
+    top: 58%;
+    transform: translateY(-50%);
+    background-image: url('thoughtful businessman with calculator, coins and question mark behind.png');
+    opacity: 1;
+}
+
+/* 모바일에서는 배경 이미지 숨기기 */
+@media (max-width: 1200px) {
+    .background-image {
+        display: none;
+    }
+}
 @media (max-width: 1200px) {
     .side-quotes {
         display: none;
@@ -36,10 +73,9 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
     animation: subtleFloat 15s ease-in-out infinite;
+    z-index: -1;
 }
 
 @keyframes subtleFloat {
@@ -68,7 +104,8 @@ body::before {
 .header {
     position: relative;
     z-index: 10;
-    margin-bottom: 50px;
+    margin-top: 110px;
+    margin-bottom: 20px;
     width: 100%;
     max-width: 700px;
 }
@@ -135,6 +172,7 @@ body::before {
 
 .service-header {
     display: none;
+    padding-top: 37px; 
 }
 
 .service-header .logo {
@@ -619,31 +657,38 @@ body::before {
 /* 서비스 선택 페이지 */
 .service-selection {
     width: 100%;
-    max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    padding: 0px 0px;
+    position: relative;
+    background: transparent;
+    max-width: 700px;
 }
 
 .service-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0px 0px;
     width: 100%;
-    margin-bottom: 35px;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: -450px;
+    margin-bottom: 0px;
 }
 
 .service-card {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     border: 1px solid rgba(203, 213, 225, 0.4);
     border-radius: 24px;
-    padding: 30px;
+    padding: 50px 40px;
     flex: 1;
-    min-width: 280px;
-    max-width: 320px;
+    min-width: 320px;
+    max-width: 350px;
+    min-height: 240px;
+    margin-bottom: 0px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -652,6 +697,9 @@ body::before {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .service-card:focus {
@@ -710,8 +758,15 @@ body::before {
         0 4px 8px rgba(59, 130, 246, 0.1);
 }
 
-.service-card:hover .service-content h3 {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+#expertConsultationCard:hover .service-content h3 {
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#debtReliefCard:hover .service-content h3 {
+    background: linear-gradient(135deg, #10B981, #059669);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -724,8 +779,13 @@ body::before {
         0 4px 8px rgba(59, 130, 246, 0.1);
 }
 
-.service-card:hover .arrow-icon {
-    color: #3b82f6;
+#expertConsultationCard:hover .arrow-icon {
+    color: #8B5CF6;
+    transform: translateX(3px);
+}
+
+#debtReliefCard:hover .arrow-icon {
+    color: #10B981;
     transform: translateX(3px);
 }
 
@@ -736,30 +796,56 @@ body::before {
 
 .service-icon {
     flex-shrink: 0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: flex-start;
 }
 
 .icon-circle {
-    width: 55px;
-    height: 55px;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border-radius: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotate(45deg);
     transition: all 0.3s ease;
+}
+
+/* 전문가 티타임 아이콘 스타일 */
+#expertConsultationCard .icon-circle {
+    background: linear-gradient(135deg, #8B5CF6, #6D28D9);
     box-shadow: 
-        0 6px 15px rgba(59, 130, 246, 0.15),
-        0 2px 5px rgba(59, 130, 246, 0.1);
+        0 6px 15px rgba(139, 92, 246, 0.15),
+        0 2px 5px rgba(139, 92, 246, 0.1);
+}
+
+#expertConsultationCard:hover .icon-circle {
+    background: linear-gradient(135deg, #9333EA, #7C3AED);
+    box-shadow: 
+        0 8px 20px rgba(139, 92, 246, 0.2),
+        0 4px 8px rgba(139, 92, 246, 0.15);
+}
+
+/* 셀프 자가진단 아이콘 스타일 */
+#debtReliefCard .icon-circle {
+    background: linear-gradient(135deg, #10B981, #059669);
+    box-shadow: 
+        0 6px 15px rgba(16, 185, 129, 0.15),
+        0 2px 5px rgba(16, 185, 129, 0.1);
+}
+
+#debtReliefCard:hover .icon-circle {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.2),
+        0 4px 8px rgba(16, 185, 129, 0.15);
 }
 
 .material-icons {
     transform: rotate(-45deg);
     color: white;
-    font-size: 28px;
+    font-size: 32px;
 }
 
 .service-content {
@@ -777,15 +863,15 @@ body::before {
 }
 
 .service-content h3 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
     line-height: 1.2;
 }
 
 .service-content p {
-    font-size: 15px;
+    font-size: 16px;
     color: #64748b;
     margin: 0;
     line-height: 1.4;
@@ -981,14 +1067,16 @@ body::before {
     }
     
     .service-container {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 15px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        max-width: 400px;
     }
     
     .service-card {
-        padding: 24px;
-        min-height: auto;
+        padding: 30px 24px;
+        min-height: 180px;
     }
     
     .service-card .service-icon {
@@ -1014,12 +1102,33 @@ body::before {
         font-size: 14px;
     }
     
+    .solution-text p {
+        font-size: 18px;
+        padding: 10px 20px;
+        letter-spacing: 0.2px;
+    }
+    
     .law-firm-link {
         margin-top: 20px;
     }
     
     .law-firm-btn {
         padding: 20px 25px;
+    }
+    
+    .floating-actions {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+    }
+    
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .floating-btn .material-icons {
+        font-size: 22px;
     }
     
     .law-firm-content h4 {
@@ -1104,18 +1213,22 @@ body::before {
 /* 법무법인 현담 링크 스타일 */
 .law-firm-link {
     width: 100%;
-    margin-top: 5px;  /* 15px에서 5px로 줄여서 더 위로 올림 */
+    margin-top: 5px;
     padding: 0 20px 10px;
+    background: transparent;
+    position: relative;
 }
 
 .law-firm-btn {
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(226, 232, 240, 0.4);
     border-radius: 24px;
-    padding: 25px 30px;
+    padding: 30px 35px;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
@@ -1127,7 +1240,7 @@ body::before {
     box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.06),
         0 2px 8px rgba(0, 0, 0, 0.04);
-    gap: 20px;
+    gap: 25px;
 }
 
 .law-firm-btn::before {
@@ -1155,14 +1268,14 @@ body::before {
 }
 
 .law-firm-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     border: 2px solid #cbd5e1;
-    border-radius: 12px;
+    border-radius: 16px;
     margin-right: 20px;
     flex-shrink: 0;
     position: relative;
@@ -1222,23 +1335,23 @@ body::before {
 }
 
 .law-firm-content h4 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     line-height: 1.2;
 }
 
 .law-firm-content p {
-    font-size: 14px;
+    font-size: 15px;
     color: #64748b;
     margin: 0;
-    line-height: 1.3;
+    line-height: 1.4;
     font-weight: 400;
 }
 
 .external-link-icon {
-    font-size: 20px;
+    font-size: 22px;
     color: #64748b;
     font-weight: bold;
     transition: all 0.2s ease;
@@ -1249,4 +1362,1012 @@ body::before {
 .law-firm-btn:hover .external-link-icon {
     color: #3b82f6;
     transform: translateY(-2px) translateX(2px);
+}
+
+/* 솔루션 텍스트 스타일 */
+.solution-text {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 0px;
+}
+
+.solution-text p {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 15px rgba(59, 130, 246, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.solution-text p:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(59, 130, 246, 0.35),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+}
+
+/* 서비스 헤더 내 솔루션 텍스트 */
+.service-header .solution-text {
+    margin-top: 60px;
+    margin-bottom: -80px;
+}
+
+/* 플로팅 액션 버튼들 */
+.floating-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+    pointer-events: none; /* 스크롤 방해 방지 */
+}
+
+.floating-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    pointer-events: auto; /* 버튼만 클릭 가능 */
+}
+
+.floating-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.floating-btn:hover::before {
+    opacity: 1;
+}
+
+.floating-btn .material-icons {
+    font-size: 24px;
+    color: white;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.floating-btn:hover .material-icons {
+    transform: scale(1.1);
+}
+
+.phone-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.phone-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hand-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.hand-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 8px 20px rgba(59, 130, 246, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 성공 사례 섹션 스타일 - 기본 스타일은 아래 통합 정의 사용 */
+
+/* 기본 섹션 타이틀 스타일 - 서비스 페이지에서는 위 통합 스타일 사용 */
+.section-title {
+    font-size: 2.2rem;
+    color: #1e3a8a;
+    text-align: left;
+    margin-bottom: 40px;
+    margin-left: 40px;
+    font-weight: 700;
+}
+
+.stories-grid {
+    display: flex;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.story-card {
+    flex: 1;
+    min-width: 350px;
+    max-width: 450px;
+}
+
+/* Responsive columns for success stories */
+@media (max-width: 1200px) {
+    .success-stories,
+    .stay-effects,
+    .progress-flow,
+    .experts-section {
+        padding: 50px 30px;
+    }
+
+    .stories-grid {
+        gap: 24px;
+        padding: 0;
+    }
+
+    .story-card {
+        min-width: 320px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .success-stories,
+    .stay-effects,
+    .progress-flow,
+    .experts-section {
+        padding: 40px 20px;
+    }
+
+    .success-stories .section-title,
+    .stay-effects .section-title,
+    .progress-flow .section-title,
+    .experts-section .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .stories-grid {
+        gap: 20px;
+        padding: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .story-card {
+        width: 100%;
+        max-width: 400px;
+        min-width: auto;
+    }
+}
+
+.story-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.06),
+        0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.08),
+        0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.story-header {
+    padding: 22px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #1e3a8a;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.story-content {
+    padding: 12px 16px 20px;
+}
+
+/* 비디오 썸네일 UX: 클릭 시 지연 로드로 iframe 교체 */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 0 16px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(15, 23, 42, 0.05);
+}
+
+.video-thumb {
+    all: unset;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+}
+
+.play-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 18px solid #fff;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+.video-thumb:hover .play-icon {
+    background: rgba(0,0,0,0.7);
+}
+
+.success-quote {
+    color: #64748b;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 컨테이너 스타일 수정 */
+.container {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    position: relative;
+    margin: 50px auto 0;
+}
+
+/* 서비스 선택 섹션 스타일 수정 */
+.service-selection {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 450px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    background: transparent;
+    overflow: visible;
+}
+
+/* Prevent horizontal overflow within service page containers */
+.service-selection,
+.service-selection .service-container,
+.service-selection .law-firm-link {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Allow grid items to shrink to container to avoid overflow */
+.stories-grid > * {
+    min-width: 0;
+}
+
+/* Ensure long text cannot cause horizontal scroll */
+.success-quote {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+
+/* 서비스 페이지 섹션들 통합 스타일 - 기존 UI와 일치 */
+.success-stories,
+.stay-effects,
+.progress-flow,
+.experts-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(203, 213, 225, 0.4);
+    border-radius: 24px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.06),
+        0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none; /* 메인 페이지에서는 숨김 */
+}
+
+/* 성공 사례 섹션 특별 설정 */
+.success-stories {
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+
+/* 추심정지 효과 섹션 특별 설정 */
+.stay-effects {
+    margin: 60px auto;
+}
+
+/* 진행 과정 섹션 특별 설정 */
+.progress-flow {
+    margin: 60px auto;
+}
+
+/* 전문가 섹션 특별 설정 */
+.experts-section {
+    margin: 60px auto;
+}
+
+/* 섹션 호버 효과 - 기존 UI와 일치 */
+.success-stories:hover,
+.stay-effects:hover,
+.progress-flow:hover,
+.experts-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.08),
+        0 5px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* 섹션 타이틀 통합 스타일 - 기존 UI와 일치 */
+.success-stories .section-title,
+.stay-effects .section-title,
+.progress-flow .section-title,
+.experts-section .section-title {
+    font-size: 2.2rem;
+    color: #1e3a8a;
+    text-align: left;
+    margin: 0 0 40px 0;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
+/* 섹션 컨텐츠 그리드 통합 스타일 */
+.success-stories .stories-grid,
+.stay-effects .timeline-track,
+.progress-flow .flow-container,
+.experts-section .experts-grid {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+/* 섹션 패딩은 각 섹션 정의에서 처리됨 */
+
+.effects-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+    padding: 20px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(59, 130, 246, 0.1),
+        rgba(59, 130, 246, 0.5) 20%,
+        rgba(59, 130, 246, 0.5) 80%,
+        rgba(59, 130, 246, 0.1)
+    );
+    z-index: 0;
+}
+
+.effect-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.effect-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 20px -4px rgba(59, 130, 246, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.effect-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -8px rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.2);
+    background: linear-gradient(145deg, #ffffff, #f0f7ff);
+}
+
+.effect-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+
+.effect-card:hover .effect-icon {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.effect-icon .material-icons {
+    color: #FFFFFF;
+    font-size: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.effect-content {
+    flex: 1;
+}
+
+.effect-content h3 {
+    color: #1E40AF;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.effect-content p {
+    color: #64748B;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    word-break: keep-all;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    background: #3B82F6;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #3B82F6;
+    margin: 15px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.step-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3B82F6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}/* 태블릿 반응형 */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .timeline-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .timeline-track::before {
+        display: none;
+    }
+
+    .effect-step {
+        padding-bottom: 20px;
+    }
+
+    .effect-card {
+        height: 100%;
+    }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 767px) {
+    .success-stories {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+
+    .stories-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .story-card {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .stay-effects {
+        margin: 30px auto 0;
+        padding: 20px 10px;
+    }
+
+    .effects-timeline {
+        padding: 20px 0;
+    }
+
+    .timeline-track {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
+    }
+
+    .timeline-track::before {
+        display: none;
+    }
+
+    .effect-step {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+
+    .effect-card {
+        margin-bottom: 10px;
+        padding: 15px;
+    }
+
+    .effect-content h3 {
+        font-size: 1rem;
+    }
+
+    .effect-content p {
+        font-size: 0.85rem;
+    }
+
+    .effect-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+    }
+
+    .effect-icon .material-icons {
+        font-size: 18px;
+    }
+
+    .step-dot {
+        display: none;
+    }
+
+    .step-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* 태블릿 반응형 */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .timeline-track {
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .effect-card {
+        padding: 20px;
+    }
+
+    .effect-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .effect-content h3 {
+        font-size: 1rem;
+    }
+
+    .effect-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .timeline-track {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .timeline-track::before {
+        display: none;
+    }
+
+    .effect-card {
+        padding: 16px;
+        min-height: 160px;
+    }
+
+    .effect-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .effect-content h3 {
+        font-size: 0.95rem;
+    }
+
+    .effect-content p {
+        font-size: 0.85rem;
+    }
+
+    .step-dot, .step-label {
+        display: none;
+    }
+}
+
+/* 진행 과정 스타일 - 기본 스타일은 위 통합 정의 사용 */
+
+.flow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+    position: relative;
+    gap: 24px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.flow-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.flow-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #3B82F6;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.flow-icon {
+    width: 80px;
+    height: 80px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
+    border: 2px solid #EFF6FF;
+    transition: all 0.3s ease;
+}
+
+.flow-step:hover .flow-icon {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -8px rgba(59, 130, 246, 0.25);
+    border-color: #3B82F6;
+}
+
+.flow-icon .material-icons {
+    font-size: 32px;
+    color: #3B82F6;
+    transition: all 0.3s ease;
+}
+
+.flow-step:hover .flow-icon .material-icons {
+    transform: scale(1.1);
+}
+
+.flow-step h3 {
+    color: #1E40AF;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.flow-arrow {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.flow-arrow .material-icons {
+    font-size: 36px;
+    color: #93C5FD;
+}
+
+.flow-note {
+    text-align: center;
+    color: #64748B;
+    font-size: 0.95rem;
+    margin-top: 30px;
+    line-height: 1.6;
+}
+
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .timeline-track {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .effect-card {
+        min-height: auto;
+    }
+    
+    .flow-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .flow-step {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .flow-number {
+        margin-bottom: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .flow-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0;
+    }
+
+    .flow-icon .material-icons {
+        font-size: 24px;
+    }
+
+    .flow-arrow {
+        position: static;
+        transform: rotate(90deg);
+        margin: 5px 0;
+    }
+
+    .flow-arrow .material-icons {
+        font-size: 24px;
+    }
+}
+
+/* 태블릿 반응형 */
+@media (min-width: 481px) and (max-width: 768px) {
+    .flow-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .flow-step {
+        flex: 0 0 calc(50% - 30px);
+    }
+
+    .flow-arrow {
+        display: none;
+    }
+
+    .flow-note {
+        padding: 0 20px;
+    }
+}
+
+/* 전문가 섹션 스타일 - 기본 스타일은 위 통합 정의 사용 */
+
+.experts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    max-width: 1000px;
+    margin: 40px auto 0;
+}
+
+.expert-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    position: relative;
+}
+
+.expert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.expert-initial {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.expert-info {
+    flex: 1;
+}
+
+.expert-info h3 {
+    color: #1E40AF;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+}
+
+.expert-field {
+    color: #3B82F6;
+    font-size: 0.9rem;
+    margin: 0 0 2px 0;
+}
+
+.expert-firm {
+    color: #64748B;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.expert-more {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: #EFF6FF;
+    border: none;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.expert-more .material-icons {
+    font-size: 20px;
+    color: #3B82F6;
+}
+
+.expert-card:hover .expert-more {
+    background: #3B82F6;
+}
+
+.expert-card:hover .expert-more .material-icons {
+    color: #FFFFFF;
+}
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+    .experts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .expert-card {
+        padding: 20px;
+    }
+
+    .expert-initial {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 640px) {
+    .experts-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .expert-card {
+        padding: 16px;
+    }
+
+    .expert-initial {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .expert-info h3 {
+        font-size: 1rem;
+    }
+
+    .expert-field, .expert-firm {
+        font-size: 0.8rem;
+    }
 }
