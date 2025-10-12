@@ -1477,11 +1477,19 @@ body::before {
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
 }
 
+.hand-btn .material-icons {
+    transform: rotate(0deg);
+}
+
 .hand-btn:hover {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 
         0 8px 20px rgba(59, 130, 246, 0.3),
         0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hand-btn:hover .material-icons {
+    transform: rotate(0deg) scale(1.1);
 }
 
 /* 성공 사례 섹션 스타일 - 기본 스타일은 아래 통합 정의 사용 */
