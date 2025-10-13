@@ -172,7 +172,7 @@ body::before {
 
 .service-header {
     display: none;
-    padding-top: 37px; 
+    padding-top: 10px; 
 }
 
 .service-header .logo {
@@ -3435,47 +3435,27 @@ body::before {
 }
 
 .checkbox-group {
-    margin-bottom: 25px;
+    margin-bottom: 25px !important;
 }
 
 .checkbox-label {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 13px;
-    color: #4a5568;
-    line-height: 1.4;
+    font-size: 14px;
+    color: #2d3748;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .checkbox-label input[type="checkbox"] {
-    display: none;
-}
-
-.checkmark {
     width: 18px;
     height: 18px;
-    border: 2px solid #e2e8f0;
-    border-radius: 4px;
-    margin-right: 10px;
-    position: relative;
-    transition: all 0.3s ease;
+    cursor: pointer;
     flex-shrink: 0;
-}
-
-.checkbox-label input[type="checkbox"]:checked + .checkmark {
-    background-color: #3b82f6;
-    border-color: #3b82f6;
-}
-
-.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
-    content: '✓';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
+    vertical-align: middle;
+    margin-right: 10px;
+    transform: translateY(-2px);
 }
 
 .consultation-submit-btn {
@@ -3522,6 +3502,10 @@ body::before {
     
     .form-group {
         margin-bottom: 16px;
+    }
+    
+    .checkbox-group {
+        margin-bottom: 25px !important;
     }
     
     .form-group input,
