@@ -39,12 +39,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="solution-text">
-        <p>
-            <span class="solution-title">당신을 위한 맞춤형 채무조정 솔루션</span><br>
-            <span class="solution-subtitle">지금 바로 확인해보세요</span>
-        </p>
+        <div class="solution-text">
+            <p>
+                <span class="solution-title">당신을 위한 맞춤형 채무조정 솔루션</span><br>
+                <span class="solution-subtitle">지금 바로 확인해보세요</span>
+            </p>
+        </div>
     </div>
     <div class="background-image first-question"></div>
     <div class="background-image second-question"></div>
@@ -72,7 +72,7 @@
     
     <div class="service-selection hidden" id="serviceSelection">
         <div class="service-container">
-            <div class="service-card" id="expertConsultationCard" onclick="window.open('https://hyundap.com/work5', '_blank')">
+            <div class="service-card" id="expertConsultationCard" onclick="showConsultationForm()">
                 <div class="service-icon">
                     <div class="icon-circle">
                         <span class="material-icons">contact_support</span>
@@ -330,7 +330,7 @@
             <div class="cta-content">
                 <h2 class="cta-title">채무의 끝, 새로운 시작</h2>
                 <p class="cta-description">더 이상 혼자 고민하지 마세요.<br>전문가와 함께 새로운 인생을 시작하세요.</p>
-                <button class="cta-button" onclick="window.open('https://hyundap.com/work5', '_blank')">
+                <button class="cta-button" onclick="showConsultationForm()">
                     <span class="cta-button-text">무료 상담으로 새 인생 시작하기</span>
                     <div class="cta-arrow-container">
                         <span class="material-icons cta-arrow">arrow_forward</span>
@@ -351,7 +351,7 @@
         <button class="floating-btn phone-btn" onclick="handlePhoneClick()" aria-label="전화 상담">
             <span class="material-icons">phone</span>
         </button>
-        <button class="floating-btn hand-btn" onclick="window.open('https://hyundap.com/', '_blank')" aria-label="온라인 상담">
+        <button class="floating-btn hand-btn" onclick="showConsultationForm()" aria-label="온라인 상담">
             <span class="material-icons">back_hand</span>
         </button>
     </div>
@@ -367,7 +367,7 @@
                 <span class="material-icons">phone</span>
                 전화걸기
             </button>
-            <button class="consultation-btn form-btn" onclick="window.open('https://hyundap.com/work5', '_blank')">
+            <button class="consultation-btn form-btn" onclick="showConsultationForm()">
                 <span class="material-icons">description</span>
                 상담신청
             </button>
@@ -416,6 +416,76 @@
                     <span class="material-icons">contact_support</span>
                     전문가와 티타임 가지기
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상담신청 폼 모달 -->
+    <div class="phone-modal" id="consultationFormModal">
+        <div class="phone-modal-content consultation-form-content">
+            <div class="phone-modal-header">
+                <h3>상담신청</h3>
+                <button class="phone-modal-close" onclick="closeConsultationForm()">
+                    <span class="close-x">×</span>
+                </button>
+            </div>
+            <div class="phone-modal-body">
+                <form class="consultation-form" id="consultationForm" onsubmit="handleConsultationFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">이름 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">연락처 *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="debtAmount">채무 규모</label>
+                        <select id="debtAmount" name="debtAmount">
+                            <option value="">선택해주세요</option>
+                            <option value="under-1000">1천만원 미만</option>
+                            <option value="1000-3000">1천만원 ~ 3천만원</option>
+                            <option value="3000-5000">3천만원 ~ 5천만원</option>
+                            <option value="5000-10000">5천만원 ~ 1억원</option>
+                            <option value="over-10000">1억원 이상</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="consultationType">상담 유형</label>
+                        <select id="consultationType" name="consultationType">
+                            <option value="">선택해주세요</option>
+                            <option value="phone">전화 상담</option>
+                            <option value="visit">방문 상담</option>
+                            <option value="online">온라인 상담</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">상담 내용</label>
+                        <textarea id="message" name="message" rows="4" placeholder="상담하고 싶은 내용을 간단히 적어주세요"></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="checkmark"></span>
+                            개인정보 수집 및 이용에 동의합니다 *
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="consultation-submit-btn">
+                        <span class="material-icons">send</span>
+                        상담신청하기
+                    </button>
+                </form>
             </div>
         </div>
     </div>

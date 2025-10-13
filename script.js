@@ -146,13 +146,11 @@ function restartQuiz() {
     const stayEffects = document.querySelector('.stay-effects');
     const progressFlow = document.querySelector('.progress-flow');
     const expertsSection = document.querySelector('.experts-section');
-    const solutionText = document.querySelector('.solution-text');
     
     if (successStories) successStories.style.display = 'none';
     if (stayEffects) stayEffects.style.display = 'none';
     if (progressFlow) progressFlow.style.display = 'none';
     if (expertsSection) expertsSection.style.display = 'none';
-    if (solutionText) solutionText.style.display = 'none';
     
     // CTA 섹션 숨기기
     const finalCtaSection = document.querySelector('.final-cta-section');
@@ -217,7 +215,6 @@ function showServiceSelection() {
     const stayEffects = document.querySelector('.stay-effects');
     const progressFlow = document.querySelector('.progress-flow');
     const expertsSection = document.querySelector('.experts-section');
-    const solutionText = document.querySelector('.solution-text');
     
     if (successStories) {
         successStories.style.display = 'block';
@@ -234,10 +231,6 @@ function showServiceSelection() {
     if (expertsSection) {
         expertsSection.style.display = 'block';
         expertsSection.style.visibility = 'visible';
-    }
-    if (solutionText) {
-        solutionText.style.display = 'block';
-        solutionText.style.visibility = 'visible';
     }
     
     // CTA 섹션 표시
@@ -372,12 +365,16 @@ function makePhoneCall() {
 document.addEventListener('click', function(event) {
     const phoneModal = document.getElementById('phoneModal');
     const selfDiagnosisModal = document.getElementById('selfDiagnosisModal');
+    const consultationFormModal = document.getElementById('consultationFormModal');
     
     if (event.target === phoneModal) {
         closePhoneModal();
     }
     if (event.target === selfDiagnosisModal) {
         closeSelfDiagnosisModal();
+    }
+    if (event.target === consultationFormModal) {
+        closeConsultationForm();
     }
 });
 
@@ -386,6 +383,7 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closePhoneModal();
         closeSelfDiagnosisModal();
+        closeConsultationForm();
     }
 });
 
@@ -407,6 +405,68 @@ function closeSelfDiagnosisModal() {
 function goToExpertConsultation() {
     window.open('https://hyundap.com/work5', '_blank');
     closeSelfDiagnosisModal();
+}
+
+// 상담신청 폼 모달 표시
+function showConsultationForm() {
+    const modal = document.getElementById('consultationFormModal');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+// 상담신청 폼 모달 닫기
+function closeConsultationForm() {
+    const modal = document.getElementById('consultationFormModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    
+    // 폼 초기화
+    const form = document.getElementById('consultationForm');
+    if (form) {
+        form.reset();
+    }
+}
+
+// 상담신청 폼 제출 처리
+function handleConsultationFormSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    // 필수 필드 검증
+    if (!data.name || !data.phone || !data.privacy) {
+        alert('필수 항목을 모두 입력해주세요.');
+        return;
+    }
+    
+    // 전화번호 형식 검증
+    const phoneRegex = /^010-\d{4}-\d{4}$/;
+    if (!phoneRegex.test(data.phone)) {
+        alert('올바른 전화번호 형식으로 입력해주세요. (예: 010-1234-5678)');
+        return;
+    }
+    
+    // 이메일 형식 검증 (이메일이 입력된 경우)
+    if (data.email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            alert('올바른 이메일 형식으로 입력해주세요.');
+            return;
+        }
+    }
+    
+    // 폼 데이터를 서버로 전송하는 로직 (실제 구현 시)
+    console.log('상담신청 데이터:', data);
+    
+    // 성공 메시지 표시
+    alert('상담신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+    
+    // 모달 닫기
+    closeConsultationForm();
+    
+    // 외부 링크로 이동 (실제 상담 페이지)
+    window.open('https://hyundap.com/work5', '_blank');
 }
 
 // 페이지 가시성 변경 시 애니메이션 재시작
