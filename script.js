@@ -403,8 +403,8 @@ function closeSelfDiagnosisModal() {
 
 // 티타임 상담으로 이동
 function goToExpertConsultation() {
-    window.open('https://hyundap.com/work5', '_blank');
     closeSelfDiagnosisModal();
+    showConsultationForm();
 }
 
 // 상담신청 폼 모달 표시
