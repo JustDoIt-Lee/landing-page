@@ -69,7 +69,7 @@
     
     <div class="service-selection hidden" id="serviceSelection">
         <div class="service-container">
-            <div class="service-card" id="expertConsultationCard" onclick="selectService('expertConsultation')">
+            <div class="service-card" id="expertConsultationCard" onclick="window.open('https://hyundap.com/work5', '_blank')">
                 <div class="service-icon">
                     <div class="icon-circle">
                         <span class="material-icons">contact_support</span>
@@ -82,7 +82,7 @@
                 <span class="material-icons arrow-icon">arrow_forward</span>
             </div>
             
-            <div class="service-card" id="debtReliefCard" onclick="selectService('debtRelief')">
+            <div class="service-card" id="debtReliefCard" onclick="showSelfDiagnosisModal()">
                 <div class="service-icon">
                     <div class="icon-circle">
                         <span class="material-icons">savings</span>
@@ -97,7 +97,7 @@
         </div>
         
         <div class="law-firm-link">
-            <a href="https://hyundap.com/" target="_blank" class="law-firm-btn">
+            <a href="https://hyundap.com/work5" target="_blank" class="law-firm-btn">
                 <div class="law-firm-icon">
                     <div class="scales">
                         <div class="scale-left"></div>
@@ -120,11 +120,11 @@
         <div class="stories-grid">
             <!-- Story 1 -->
             <div class="story-card">
-                <div class="story-header">고객 1</div>
+                <div class="story-header">김** 님</div>
                 <div class="story-content">
                     <div class="video-wrapper">
-                        <button class="video-thumb" data-video-id="ysz5S6PUM-U" aria-label="고객 1 영상 재생" title="영상 재생">
-                            <img src="https://img.youtube.com/vi/ysz5S6PUM-U/hqdefault.jpg" alt="고객 1 인터뷰 썸네일">
+                        <button class="video-thumb" data-video-id="F4h1lmufYGI" aria-label="고객 1 영상 재생" title="영상 재생">
+                            <img src="https://img.youtube.com/vi/F4h1lmufYGI/hqdefault.jpg" alt="고객 1 인터뷰 썸네일">
                             <span class="play-icon" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -133,11 +133,11 @@
             </div>
             <!-- Story 2 -->
             <div class="story-card">
-                <div class="story-header">고객 2</div>
+                <div class="story-header">이** 님</div>
                 <div class="story-content">
                     <div class="video-wrapper">
-                        <button class="video-thumb" data-video-id="ScMzIvxBSi4" aria-label="고객 2 영상 재생" title="영상 재생">
-                            <img src="https://img.youtube.com/vi/ScMzIvxBSi4/hqdefault.jpg" alt="고객 2 인터뷰 썸네일">
+                        <button class="video-thumb" data-video-id="9QHC1mpcgSw" aria-label="고객 2 영상 재생" title="영상 재생">
+                            <img src="https://img.youtube.com/vi/9QHC1mpcgSw/hqdefault.jpg" alt="고객 2 인터뷰 썸네일">
                             <span class="play-icon" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -252,71 +252,151 @@
                 <h3>추심정지 명령 발령</h3>
             </div>
         </div>
-        <p class="flow-note">추심이 걱정될 때, 개최된 변제를 진행하면 걱부터 새로운 탈출을 영업할 수 있습니다.</p>
+        <p class="flow-note">
+            <span class="material-icons note-icon">info</span>
+            추심이 멈춘 뒤, 계획된 변제를 진행하면 남은 채무 일부를 탕감받을 수 있습니다.
+        </p>
     </div>
 
     <!-- 함께 일할 전문가 섹션 -->
     <div class="experts-section">
         <h2 class="section-title">함께할 전문가</h2>
         <div class="experts-grid">
-            <div class="expert-card">
-                <div class="expert-initial">김</div>
+            <div class="expert-card" onclick="window.open('https://hyundap.com/manage_lawyer_list/119', '_blank')">
+                <div class="expert-image">
+                    <img src="9440461.jpg" alt="장심건 변호사" />
+                </div>
                 <div class="expert-info">
-                    <h3>김민수 변호사</h3>
+                    <h3>장심건 변호사</h3>
                     <p class="expert-field">형사 전문</p>
-                    <p class="expert-firm">현생 법률파트너스</p>
+                    <p class="expert-firm">15년 경력의 형사 전문 변호사</p>
                 </div>
                 <button class="expert-more" aria-label="자세히 보기">
                     <span class="material-icons">arrow_forward</span>
                 </button>
             </div>
 
-            <div class="expert-card">
-                <div class="expert-initial">이</div>
+            <div class="expert-card" onclick="window.open('https://hyundap.com/manage_lawyer_list/122', '_blank')">
+                <div class="expert-image">
+                    <img src="9720009.jpg" alt="한경수 변호사" />
+                </div>
                 <div class="expert-info">
-                    <h3>이서현 변호사</h3>
+                    <h3>한경수 변호사</h3>
                     <p class="expert-field">민사 전문</p>
-                    <p class="expert-firm">현생 법률파트너스</p>
+                    <p class="expert-firm">부동산 및 계약 분야 전문가</p>
                 </div>
                 <button class="expert-more" aria-label="자세히 보기">
                     <span class="material-icons">arrow_forward</span>
                 </button>
             </div>
 
-            <div class="expert-card">
-                <div class="expert-initial">박</div>
+            <div class="expert-card" onclick="window.open('https://hyundap.com/manage_lawyer_list/137', '_blank')">
+                <div class="expert-image">
+                    <img src="9720037.jpg" alt="김창호 변호사" />
+                </div>
                 <div class="expert-info">
-                    <h3>박지훈 변호사</h3>
+                    <h3>김창호 변호사</h3>
                     <p class="expert-field">가사 전문</p>
-                    <p class="expert-firm">현생 법률파트너스</p>
+                    <p class="expert-firm">이혼 및 상속 문제 해결 전문</p>
                 </div>
                 <button class="expert-more" aria-label="자세히 보기">
                     <span class="material-icons">arrow_forward</span>
                 </button>
             </div>
 
-            <div class="expert-card">
-                <div class="expert-initial">최</div>
+            <div class="expert-card" onclick="window.open('https://hyundap.com/manage_lawyer_list/138', '_blank')">
+                <div class="expert-image">
+                    <img src="9720038.jpg" alt="황창근 변호사" />
+                </div>
                 <div class="expert-info">
-                    <h3>최유리 변호사</h3>
+                    <h3>황창근 변호사</h3>
                     <p class="expert-field">상사 전문</p>
-                    <p class="expert-firm">현생 법률파트너스</p>
+                    <p class="expert-firm">기업 법무 및 금융 분야 전문</p>
                 </div>
                 <button class="expert-more" aria-label="자세히 보기">
                     <span class="material-icons">arrow_forward</span>
                 </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 최종 CTA 섹션 -->
+    <div class="final-cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2 class="cta-title">채무의 끝, 새로운 시작</h2>
+                <p class="cta-description">더 이상 혼자 고민하지 마세요.<br>전문가와 함께 새로운 인생을 시작하세요.</p>
+                <button class="cta-button" onclick="window.open('https://hyundap.com/work5', '_blank')">
+                    <span class="cta-button-text">무료 상담으로 새 인생 시작하기</span>
+                    <div class="cta-arrow-container">
+                        <span class="material-icons cta-arrow">arrow_forward</span>
+                        <span class="cta-pulse"></span>
+                    </div>
+                </button>
+            </div>
+            <div class="cta-decoration">
+                <div class="cta-icon">
+                    <span class="material-icons">support_agent</span>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- 플로팅 액션 버튼들 -->
     <div class="floating-actions">
-        <button class="floating-btn phone-btn" onclick="window.open('tel:1588-0000', '_self')" aria-label="전화 상담">
+        <button class="floating-btn phone-btn" onclick="handlePhoneClick()" aria-label="전화 상담">
             <span class="material-icons">phone</span>
         </button>
         <button class="floating-btn hand-btn" onclick="window.open('https://hyundap.com/', '_blank')" aria-label="온라인 상담">
             <span class="material-icons">back_hand</span>
         </button>
+    </div>
+
+    <!-- 전화번호 모달 -->
+    <div class="phone-modal" id="phoneModal">
+        <div class="phone-modal-content">
+            <div class="phone-modal-header">
+                <h3>전화 상담</h3>
+                <button class="phone-modal-close" onclick="closePhoneModal()">
+                    <span class="close-x">×</span>
+                </button>
+            </div>
+            <div class="phone-modal-body">
+                <div class="phone-icon">
+                    <span class="material-icons">phone</span>
+                </div>
+                <div class="phone-number">02-6929-0514</div>
+                <p class="phone-description">이 번호로 연락 부탁드립니다</p>
+                <button class="phone-call-btn" onclick="makePhoneCall()">
+                    <span class="material-icons">phone</span>
+                    전화 걸기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 셀프 진단 준비중 모달 -->
+    <div class="phone-modal" id="selfDiagnosisModal">
+        <div class="phone-modal-content">
+            <div class="phone-modal-header">
+                <h3>셀프 진단 서비스</h3>
+                <button class="phone-modal-close" onclick="closeSelfDiagnosisModal()">
+                    <span class="close-x">×</span>
+                </button>
+            </div>
+            <div class="phone-modal-body">
+                <div class="phone-icon">
+                    <span class="material-icons">build</span>
+                </div>
+                <div class="phone-number">서비스 준비중</div>
+                <p class="phone-description">전문가와의 무료 상담으로도 진단이 가능하니<br>잠시동안은 전문가 티타임을 이용해주세요.</p>
+                <button class="phone-call-btn" onclick="goToExpertConsultation()">
+                    <span class="material-icons">contact_support</span>
+                    전문가와 티타임 가지기
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

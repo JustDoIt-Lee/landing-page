@@ -123,6 +123,23 @@ function restartQuiz() {
     const serviceSelection = document.getElementById('serviceSelection');
     serviceSelection.classList.add('hidden');
     
+    // 서비스 페이지 섹션들 숨기기
+    const successStories = document.getElementById('successStories');
+    const stayEffects = document.querySelector('.stay-effects');
+    const progressFlow = document.querySelector('.progress-flow');
+    const expertsSection = document.querySelector('.experts-section');
+    
+    if (successStories) successStories.style.display = 'none';
+    if (stayEffects) stayEffects.style.display = 'none';
+    if (progressFlow) progressFlow.style.display = 'none';
+    if (expertsSection) expertsSection.style.display = 'none';
+    
+    // CTA 섹션 숨기기
+    const finalCtaSection = document.querySelector('.final-cta-section');
+    if (finalCtaSection) {
+        finalCtaSection.style.display = 'none';
+    }
+    
     // 퀴즈 초기화
     init();
 }
@@ -156,10 +173,28 @@ function showServiceSelection() {
     const progressFlow = document.querySelector('.progress-flow');
     const expertsSection = document.querySelector('.experts-section');
     
-    if (successStories) successStories.style.display = 'block';
-    if (stayEffects) stayEffects.style.display = 'block';
-    if (progressFlow) progressFlow.style.display = 'block';
-    if (expertsSection) expertsSection.style.display = 'block';
+    if (successStories) {
+        successStories.style.display = 'block';
+        successStories.style.visibility = 'visible';
+    }
+    if (stayEffects) {
+        stayEffects.style.display = 'block';
+        stayEffects.style.visibility = 'visible';
+    }
+    if (progressFlow) {
+        progressFlow.style.display = 'flex';
+        progressFlow.style.visibility = 'visible';
+    }
+    if (expertsSection) {
+        expertsSection.style.display = 'block';
+        expertsSection.style.visibility = 'visible';
+    }
+    
+    // CTA 섹션 표시
+    const finalCtaSection = document.querySelector('.final-cta-section');
+    if (finalCtaSection) {
+        finalCtaSection.style.display = 'block';
+    }
     
     // 배경 이미지들 숨기기
     const firstQuestion = document.querySelector('.first-question');
@@ -243,6 +278,85 @@ function handleLogoClick() {
         if (firstQuestion) firstQuestion.style.opacity = '0';
         showServiceSelection();
     }
+}
+
+// 전화 버튼 클릭 처리 (모바일/웹 구분)
+function handlePhoneClick() {
+    const phoneNumber = '02-6929-0514';
+    
+    // 모바일 디바이스 감지
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                     (window.innerWidth <= 768);
+    
+    if (isMobile) {
+        // 모바일에서는 전화 연결
+        window.open(`tel:${phoneNumber}`, '_self');
+    } else {
+        // 웹에서는 모달 표시
+        showPhoneModal();
+    }
+}
+
+// 전화번호 모달 표시
+function showPhoneModal() {
+    const modal = document.getElementById('phoneModal');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+}
+
+// 전화번호 모달 닫기
+function closePhoneModal() {
+    const modal = document.getElementById('phoneModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = ''; // 스크롤 복원
+}
+
+// 모달 내 전화 걸기 버튼
+function makePhoneCall() {
+    const phoneNumber = '02-6929-0514';
+    window.open(`tel:${phoneNumber}`, '_self');
+    closePhoneModal();
+}
+
+// 모달 배경 클릭 시 닫기
+document.addEventListener('click', function(event) {
+    const phoneModal = document.getElementById('phoneModal');
+    const selfDiagnosisModal = document.getElementById('selfDiagnosisModal');
+    
+    if (event.target === phoneModal) {
+        closePhoneModal();
+    }
+    if (event.target === selfDiagnosisModal) {
+        closeSelfDiagnosisModal();
+    }
+});
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePhoneModal();
+        closeSelfDiagnosisModal();
+    }
+});
+
+// 셀프 진단 모달 표시
+function showSelfDiagnosisModal() {
+    const modal = document.getElementById('selfDiagnosisModal');
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+// 셀프 진단 모달 닫기
+function closeSelfDiagnosisModal() {
+    const modal = document.getElementById('selfDiagnosisModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+// 티타임 상담으로 이동
+function goToExpertConsultation() {
+    window.open('https://hyundap.com/work5', '_blank');
+    closeSelfDiagnosisModal();
 }
 
 // 페이지 가시성 변경 시 애니메이션 재시작
