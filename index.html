@@ -39,9 +39,12 @@
                 </div>
             </div>
         </div>
-        <div class="solution-text">
-            <p>당신을 위한 맞춤 채무조정 솔루션, 지금 바로 확인해보세요</p>
-        </div>
+    </div>
+    <div class="solution-text">
+        <p>
+            <span class="solution-title">당신을 위한 맞춤형 채무조정 솔루션</span><br>
+            <span class="solution-subtitle">지금 바로 확인해보세요</span>
+        </p>
     </div>
     <div class="background-image first-question"></div>
     <div class="background-image second-question"></div>
@@ -252,10 +255,10 @@
                 <h3>추심정지 명령 발령</h3>
             </div>
         </div>
-        <p class="flow-note">
+        <!-- <p class="flow-note">
             <span class="material-icons note-icon">info</span>
             추심이 멈춘 뒤, 계획된 변제를 진행하면 남은 채무 일부를 탕감받을 수 있습니다.
-        </p>
+        </p> -->
     </div>
 
     <!-- 함께 일할 전문가 섹션 -->
@@ -343,7 +346,7 @@
         </div>
     </div>
 
-    <!-- 플로팅 액션 버튼들 -->
+    <!-- 플로팅 액션 버튼들 (데스크톱용) -->
     <div class="floating-actions">
         <button class="floating-btn phone-btn" onclick="handlePhoneClick()" aria-label="전화 상담">
             <span class="material-icons">phone</span>
@@ -351,6 +354,24 @@
         <button class="floating-btn hand-btn" onclick="window.open('https://hyundap.com/', '_blank')" aria-label="온라인 상담">
             <span class="material-icons">back_hand</span>
         </button>
+    </div>
+
+    <!-- 모바일 하단 고정 상담 바 -->
+    <div class="mobile-consultation-bar">
+        <div class="consultation-info">
+            <div class="consultation-title">1:1 무료 상담</div>
+            <div class="consultation-subtitle">전문가와 직접 상담하세요</div>
+        </div>
+        <div class="consultation-buttons">
+            <button class="consultation-btn phone-btn" onclick="handlePhoneClick()">
+                <span class="material-icons">phone</span>
+                전화걸기
+            </button>
+            <button class="consultation-btn form-btn" onclick="window.open('https://hyundap.com/work5', '_blank')">
+                <span class="material-icons">description</span>
+                상담신청
+            </button>
+        </div>
     </div>
 
     <!-- 전화번호 모달 -->

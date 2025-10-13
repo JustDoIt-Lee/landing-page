@@ -21,7 +21,7 @@ body {
     color: #334155;
     position: relative;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 /* 배경 이미지 스타일링 */
@@ -235,7 +235,8 @@ body::before {
     justify-content: center;
     padding: 20px 0;
     flex: 1;
-    margin: 0 auto;
+    margin: 0px auto;
+    margin-top: 10px;
     max-width: 400px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -364,6 +365,22 @@ body::before {
 }
 
 @media (max-width: 768px) {
+    body {
+        background: linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%) !important;
+    }
+    
+    body::before {
+        display: none !important;
+    }
+    
+    .service-selection {
+        background: transparent !important;
+    }
+    
+    .container {
+        margin: 10px auto 0;
+    }
+    
     .logo {
         padding: 20px;
     }
@@ -1000,28 +1017,32 @@ body::before {
     }
     
     .question-card, .result-card {
-        padding: 30px 20px;
+        padding: 15px 12px;
         margin: 0 15px;
     }
     
     .question-text {
-        font-size: 22px;
-        line-height: 1.4;
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 30px;
+        margin-top: 20px;
     }
 
     .progress-bar {
-        margin: 15px 0;
+        margin: 8px 0;
     }
     
     .button-container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         gap: 12px;
     }
     
     .btn {
         width: 100%;
-        max-width: 200px;
+        max-width: 180px;
+        padding: 12px 24px;
+        font-size: 16px;
     }
     
     .header {
@@ -1067,59 +1088,204 @@ body::before {
     }
     
     .service-container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 20px;
-        padding: 20px;
-        max-width: 400px;
+        gap: 15px;
+        padding: 10px;
+        max-width: 100%;
+        justify-content: center;
+        margin-bottom: 0px;
     }
     
     .service-card {
-        padding: 30px 24px;
-        min-height: 180px;
+        padding: 18px 12px;
+        min-height: 150px;
+        min-width: 130px;
+        max-width: 150px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
     }
     
     .service-card .service-icon {
-        transform: scale(0.9);
+        transform: scale(0.8);
+        margin-bottom: 12px;
     }
     
     .service-content h3 {
-        font-size: 18px;
-        margin-bottom: 6px;
+        font-size: 15px;
+        margin-bottom: 8px;
+        line-height: 1.2;
+        font-weight: 700;
     }
     
     .service-content p {
-        font-size: 14px;
-        line-height: 1.5;
-        max-width: 100%;
+        font-size: 12px;
+        line-height: 1.3;
+        margin: 0;
+        color: #64748b;
     }
     
-    .service-content h3 {
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+    }
+    
+    .material-icons {
         font-size: 20px;
     }
     
-    .service-content p {
-        font-size: 14px;
+    .solution-text {
+        width: 90%;
+        max-width: 100%;
+        padding: 8px 18px;
     }
     
     .solution-text p {
-        font-size: 18px;
-        padding: 10px 20px;
-        letter-spacing: 0.2px;
+        font-size: 16px;
+        padding: 8px 16px;
+        letter-spacing: 0.1px;
+        border-radius: 8px;
     }
     
     .law-firm-link {
-        margin-top: 20px;
+        margin-top: 0px;
     }
     
     .law-firm-btn {
-        padding: 20px 25px;
+        padding: 8px 18px !important;
+        max-width: 100% !important;
+        margin: -30px auto -25px auto !important;
+        gap: 18px !important;
+        min-height: auto !important;
     }
     
+    .law-firm-icon {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 9px !important;
+    }
+    
+    .law-firm-content h4 {
+        font-size: 16px !important;
+        margin: 0 0 5px 0 !important;
+    }
+    
+    .law-firm-content p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    
+    .external-link-icon {
+        font-size: 15px !important;
+    }
+    
+    /* 모바일에서는 플로팅 액션 버튼 숨기기 */
     .floating-actions {
-        bottom: 20px;
-        right: 20px;
-        gap: 12px;
+        display: none !important;
+    }
+    
+    /* 모바일 하단 고정 1:1 상담 버튼 */
+    .mobile-consultation-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .consultation-info {
+        flex: 1;
+        color: white;
+        margin-right: 15px;
+    }
+    
+    .consultation-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    .consultation-subtitle {
+        font-size: 12px;
+        opacity: 0.9;
+        margin: 0;
+        line-height: 1.3;
+    }
+    
+    .consultation-buttons {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+    
+    .consultation-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 10px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        min-width: 70px;
+        justify-content: center;
+    }
+    
+    .consultation-btn .material-icons {
+        font-size: 16px;
+        transform: none !important;
+    }
+    
+    .consultation-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .consultation-btn:active {
+        transform: translateY(0);
+    }
+    
+    .consultation-btn.phone-btn {
+        background: rgba(76, 175, 80, 0.3);
+        border-color: rgba(76, 175, 80, 0.5);
+    }
+    
+    .consultation-btn.phone-btn:hover {
+        background: rgba(76, 175, 80, 0.4);
+        border-color: rgba(76, 175, 80, 0.7);
+    }
+    
+    .consultation-btn.form-btn {
+        background: rgba(33, 150, 243, 0.3);
+        border-color: rgba(33, 150, 243, 0.5);
+    }
+    
+    .consultation-btn.form-btn:hover {
+        background: rgba(33, 150, 243, 0.4);
+        border-color: rgba(33, 150, 243, 0.7);
     }
     
     .floating-btn {
@@ -1282,8 +1448,8 @@ body::before {
 
 .scales {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .scale-left, .scale-right {
@@ -1363,30 +1529,46 @@ body::before {
     transform: translateY(-2px) translateX(2px);
 }
 
-/* 솔루션 텍스트 스타일 */
+/* 솔루션 텍스트 스타일 (웹용) */
 .solution-text {
     text-align: center;
-    margin-top: 20px;
-    padding: 0 0px;
+    margin-top: 40px;
+    margin-bottom: -70px;
+    padding: 0 40px;
+    width: 48%;
+    max-width: none;
+    display: none; /* 기본적으로 숨김 */
 }
 
 .solution-text p {
-    font-size: 20px;
+    font-size: 22px;
     color: #ffffff;
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     position: relative;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 
-        0 4px 15px rgba(59, 130, 246, 0.25),
-        0 2px 6px rgba(0, 0, 0, 0.1);
+        0 3px 12px rgba(59, 130, 246, 0.2),
+        0 1px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.solution-title {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.solution-subtitle {
+    color: #fbbf24;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .solution-text p:hover {
@@ -1400,7 +1582,7 @@ body::before {
 
 /* 서비스 헤더 내 솔루션 텍스트 */
 .service-header .solution-text {
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: -80px;
 }
 
@@ -1414,6 +1596,18 @@ body::before {
     gap: 15px;
     z-index: 1000;
     pointer-events: none; /* 스크롤 방해 방지 */
+}
+
+/* 모바일 상담 바는 데스크톱에서 숨기기 */
+.mobile-consultation-bar {
+    display: none;
+}
+
+/* 모바일에서만 모바일 상담 바 보이기 */
+@media (max-width: 768px) and (orientation: portrait) {
+    .mobile-consultation-bar {
+        display: flex !important;
+    }
 }
 
 .floating-btn {
@@ -1499,6 +1693,7 @@ body::before {
     color: #1e3a8a;
     text-align: left;
     margin-bottom: 40px;
+    margin-top: -300px;
     margin-left: 40px;
     font-weight: 700;
 }
@@ -1547,6 +1742,10 @@ body::before {
     .progress-flow,
     .experts-section {
         padding: 40px 20px;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
     }
 
     .success-stories .section-title,
@@ -1673,12 +1872,29 @@ body::before {
     margin: 50px auto 0;
 }
 
+@media (max-width: 768px) {
+    .header,
+    .main-header {
+        margin-top: 60px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .service-header {
+        margin-top: 22px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .container {
+        margin: 10px auto 0;
+    }
+}
+
 /* 서비스 선택 섹션 스타일 수정 */
 .service-selection {
     width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    padding: 450px 20px 20px;
+        max-width: none;
+        margin: 0 auto;
+        padding: 460px 20px 20px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -1692,7 +1908,7 @@ body::before {
 .service-selection .service-container,
 .service-selection .law-firm-link {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 /* Allow grid items to shrink to container to avoid overflow */
@@ -1736,6 +1952,129 @@ body::before {
     margin-bottom: 60px;
 }
 
+/* 모바일에서 성공 사례 섹션 최적화 */
+@media (max-width: 768px) and (orientation: portrait) {
+    .success-stories {
+        margin-top: -170px !important;
+        margin-bottom: 40px !important;
+        padding: 15px 15px !important;
+    }
+    
+.success-stories .section-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 33px !important;
+        margin-top: 40px !important;
+        text-align: center !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .stories-grid {
+        gap: 15px !important;
+        grid-template-columns: none !important;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding-bottom: 10px !important;
+        scrollbar-width: thin !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    .stories-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .stories-grid {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+    
+    .story-card {
+        padding: 20px 20px 15px 20px !important;
+        margin: 0 !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
+        width: 280px !important;
+        height: 300px !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        box-sizing: border-box !important;
+        scroll-snap-align: start !important;
+    }
+    
+    .story-card p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .success-stories .stories-grid .story-card .story-content {
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .success-stories .stories-grid .story-card .story-content .video-wrapper {
+        height: 150px !important;
+        margin-bottom: 14px !important;
+        margin-top: 15px;
+        flex-shrink: 0 !important;
+        width: 230px !important;
+        position: relative !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        background: rgba(15, 23, 42, 0.05) !important;
+        display: inline-block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    
+    .story-video img {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+    }
+    
+    .success-stories .stories-grid .story-card .story-header {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+        line-height: 1.3 !important;
+        flex-shrink: 0 !important;
+        text-align: left !important;
+        width: fit-content !important;
+        color: #2c3e50 !important;
+        font-weight: 600 !important;
+        padding: 6px 10px !important;
+        border-radius: 8px !important;
+        background-color: rgba(52, 152, 219, 0.08) !important;
+        border: 1px solid rgba(52, 152, 219, 0.2) !important;
+    }
+    
+    
+    .story-card .success-quote {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+        text-align: left !important;
+        width: 100% !important;
+        margin-left: 20px !important;
+    }
+}
+
 /* 추심정지 효과 섹션 특별 설정 */
 .stay-effects {
     margin: 60px auto;
@@ -1772,12 +2111,16 @@ body::before {
 .progress-flow .section-title,
 .experts-section .section-title {
     font-size: 2.2rem;
-    color: #1e3a8a;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: left;
     margin: 0 0 40px 0;
     font-weight: 700;
     letter-spacing: 0.3px;
     line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 섹션 컨텐츠 그리드 통합 스타일 */
@@ -1944,6 +2287,11 @@ body::before {
     .section-title {
         font-size: 1.75rem;
         text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .stories-grid {
@@ -2039,14 +2387,61 @@ body::before {
 
 /* 모바일 반응형 */
 @media (max-width: 768px) {
+    .stay-effects .section-title {
+        text-align: center !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .progress-flow {
+        margin-top: -20px !important;
+    }
+    
+    .progress-flow .section-title {
+        text-align: center !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 35px !important;
+    }
+    
+    .experts-section {
+        margin-top: -40px !important;
+    }
+    
+    .experts-section .section-title {
+        text-align: center !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 25px !important;
+    }
+    
     .timeline-track {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        padding: 10px;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        gap: 15px !important;
+        padding: 0 0 15px 0 !important;
+        margin-top: 0 !important;
+        scrollbar-width: thin !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
     .timeline-track::before {
-        display: none;
+        display: none !important;
+    }
+    
+    .timeline-track::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .timeline-track {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+    }
+    
+    .effect-step {
+        min-width: 200px !important;
+        max-width: 200px !important;
+        flex-shrink: 0 !important;
     }
 
     .effect-card {
@@ -2197,17 +2592,69 @@ body::before {
         min-height: auto;
     }
     
-    .flow-container {
-        flex-direction: column;
-        gap: 30px;
+    .progress-flow .flow-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    .flow-step {
-        width: 100%;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 15px;
-        text-align: left;
+    .progress-flow .flow-step {
+        width: 100% !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 15px !important;
+        text-align: left !important;
+        padding: 12px 15px !important;
+        background: rgba(59, 130, 246, 0.08) !important;
+        border-radius: 10px !important;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.12) !important;
+        border-left: 4px solid #3b82f6 !important;
+    }
+    
+    .progress-flow .flow-step .flow-number {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+        color: white !important;
+        width: 35px !important;
+        height: 35px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .progress-flow .flow-step .flow-icon {
+        background: rgba(59, 130, 246, 0.12) !important;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        border: 1px solid rgba(59, 130, 246, 0.25) !important;
+    }
+    
+    .progress-flow .flow-step .flow-icon .material-icons {
+        color: #3b82f6 !important;
+        font-size: 20px !important;
+    }
+    
+    .progress-flow .flow-step h3 {
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        color: #1e40af !important;
+        margin: 0 !important;
+        line-height: 1.3 !important;
+    }
+    
+    .progress-flow .flow-arrow {
+        display: none !important;
     }
 
     .flow-number {
@@ -2293,7 +2740,7 @@ body::before {
     transition: all 0.3s ease;
     border: 1px solid rgba(226, 232, 240, 0.8);
     position: relative;
-    min-height: 280px;
+    min-height: 200px;
     cursor: pointer;
 }
 
@@ -2408,10 +2855,33 @@ body::before {
 
 /* 모바일 반응형 */
 @media (max-width: 640px) {
-    .experts-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 350px;
+    .experts-section .experts-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        gap: 15px !important;
+        padding: 0 0 15px 0 !important;
+        margin: 0 !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    .experts-section .experts-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    .experts-section .experts-grid {
+        -ms-overflow-style: none !important;
+    }
+    
+    .experts-section .expert-card {
+        min-width: 200px !important;
+        max-width: 200px !important;
+        flex-shrink: 0 !important;
+        scroll-snap-align: start !important;
     }
 
     .expert-card {
@@ -2865,7 +3335,7 @@ body::before {
 
 @media (max-width: 640px) {
     .final-cta-section {
-        margin: 20px 0 0 0;
+        margin: -20px 0 0 0 !important;
         padding: 40px 20px;
         border-radius: 0;
     }

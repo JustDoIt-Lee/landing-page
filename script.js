@@ -33,6 +33,18 @@ function init() {
     progress.style.width = '50%';
     // 카운터 초기 설정
     questionCounter.textContent = '1 / 2';
+    
+    // 모바일에서 페이지 로드 시 가로 스크롤 초기화
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        setTimeout(() => {
+            const storiesGrid = document.querySelector('.stories-grid');
+            if (storiesGrid) {
+                storiesGrid.scrollLeft = 0;
+                storiesGrid.scrollTo(0, 0);
+            }
+        }, 200);
+    }
 }
 
 // 질문 업데이트
@@ -123,16 +135,24 @@ function restartQuiz() {
     const serviceSelection = document.getElementById('serviceSelection');
     serviceSelection.classList.add('hidden');
     
+    // 모바일에서 메인 페이지로 돌아갈 때 서비스 페이지 클래스 제거
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        document.body.classList.remove('service-page');
+    }
+    
     // 서비스 페이지 섹션들 숨기기
     const successStories = document.getElementById('successStories');
     const stayEffects = document.querySelector('.stay-effects');
     const progressFlow = document.querySelector('.progress-flow');
     const expertsSection = document.querySelector('.experts-section');
+    const solutionText = document.querySelector('.solution-text');
     
     if (successStories) successStories.style.display = 'none';
     if (stayEffects) stayEffects.style.display = 'none';
     if (progressFlow) progressFlow.style.display = 'none';
     if (expertsSection) expertsSection.style.display = 'none';
+    if (solutionText) solutionText.style.display = 'none';
     
     // CTA 섹션 숨기기
     const finalCtaSection = document.querySelector('.final-cta-section');
@@ -167,11 +187,37 @@ function showServiceSelection() {
     serviceSelection.classList.remove('hidden');
     serviceSelection.classList.add('fade-in');
     
+    // 모바일에서만 변화를 만든 사람들 섹션의 가로 스크롤을 맨 왼쪽으로 이동
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        setTimeout(() => {
+            const storiesGrid = document.querySelector('.stories-grid');
+            if (storiesGrid) {
+                storiesGrid.scrollLeft = 0;
+                // 강제로 스크롤 위치 초기화
+                storiesGrid.scrollTo(0, 0);
+            }
+        }, 100);
+        
+        // 추가로 더 늦은 타이밍에도 한 번 더 실행
+        setTimeout(() => {
+            const storiesGrid = document.querySelector('.stories-grid');
+            if (storiesGrid) {
+                storiesGrid.scrollLeft = 0;
+                storiesGrid.scrollTo(0, 0);
+            }
+        }, 500);
+        
+        // 모바일 서비스 페이지 클래스 추가 (필요시 사용)
+        document.body.classList.add('service-page');
+    }
+    
     // 서비스 페이지 섹션들 보이기
     const successStories = document.getElementById('successStories');
     const stayEffects = document.querySelector('.stay-effects');
     const progressFlow = document.querySelector('.progress-flow');
     const expertsSection = document.querySelector('.experts-section');
+    const solutionText = document.querySelector('.solution-text');
     
     if (successStories) {
         successStories.style.display = 'block';
@@ -188,6 +234,10 @@ function showServiceSelection() {
     if (expertsSection) {
         expertsSection.style.display = 'block';
         expertsSection.style.visibility = 'visible';
+    }
+    if (solutionText) {
+        solutionText.style.display = 'block';
+        solutionText.style.visibility = 'visible';
     }
     
     // CTA 섹션 표시
