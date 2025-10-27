@@ -488,6 +488,19 @@ const totalSteps = 6;
 function showSelfCheckPage() {
     document.getElementById('selfCheckPage').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    
+    // 인트로 화면 표시
+    document.getElementById('selfCheckIntro').style.display = 'flex';
+    document.getElementById('selfCheckContainer').style.display = 'none';
+}
+
+// 진단 시작하기
+function startSelfCheck() {
+    // 인트로 화면 숨기기
+    document.getElementById('selfCheckIntro').style.display = 'none';
+    document.getElementById('selfCheckContainer').style.display = 'flex';
+    
+    // 셀프진단 초기화
     initSelfCheck();
 }
 

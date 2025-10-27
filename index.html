@@ -409,6 +409,40 @@
             <div class="message-detail">모든 질문에 답변해주세요</div>
             <button class="close-btn" onclick="closeValidationMessage()">확인</button>
         </div>
+        
+        <!-- 진단 시작 인트로 -->
+        <div class="self-check-intro" id="selfCheckIntro">
+            <div class="intro-content">
+                <div class="intro-icon">
+                    <div class="intro-circle">
+                        <span class="material-icons">analytics</span>
+                    </div>
+                </div>
+                <h1 class="intro-title">개인회생 초정밀 예측을 시작합니다</h1>
+                <p class="intro-description">
+                    AI 기반 분석으로 당신의 개인회생 가능성을<br>
+                    정확하게 예측해드립니다
+                </p>
+                <div class="intro-features">
+                    <div class="feature-item">
+                        <span class="material-icons">check_circle</span>
+                        <span>6단계 간편 진단</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">check_circle</span>
+                        <span>실시간 가능성 분석</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="material-icons">check_circle</span>
+                        <span>맞춤형 상담 제안</span>
+                    </div>
+                </div>
+                <button class="intro-start-btn" onclick="startSelfCheck()">
+                    <span class="material-icons">play_arrow</span>
+                    진단 시작하기
+                </button>
+            </div>
+        </div>
         <div class="self-check-logo-fixed" onclick="goBackToMain()">
             <div class="self-check-logo-wrapper-fixed">
                 <div class="self-check-logo-main-fixed">
@@ -421,7 +455,7 @@
             </div>
         </div>
         
-        <div class="self-check-container">
+        <div class="self-check-container" id="selfCheckContainer">
             
             <div class="self-check-progress">
                 <div class="progress-bar">
