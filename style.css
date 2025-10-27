@@ -3520,3 +3520,819 @@ body::before {
         font-size: 15px;
     }
 }
+
+/* ===========================
+   셀프진단 페이지 스타일
+   =========================== */
+
+.self-check-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%);
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.self-check-logo-fixed {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid rgba(203, 213, 225, 0.4);
+    border-radius: 16px;
+    min-height: 60px;
+    padding: 12px 16px;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.06),
+        0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-size: 200% 200%;
+    background-image: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f8fafc 45%,
+        rgba(59, 130, 246, 0.08) 50%,
+        #f8fafc 55%,
+        #ffffff 100%
+    );
+    animation: shimmerEffect 4s infinite;
+}
+
+.self-check-logo-fixed:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.self-check-logo-wrapper-fixed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.self-check-logo-main-fixed {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.self-check-logo-icon-fixed {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 셀프체크 로고 아이콘 - 메인페이지와 동일한 모양 */
+.self-check-logo-fixed .self-check-logo-circle-fixed {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+    animation: rotateLogo 20s linear infinite !important;
+    box-shadow: 
+        0 4px 12px rgba(59, 130, 246, 0.3),
+        0 2px 6px rgba(29, 78, 216, 0.2) !important;
+}
+
+/* 추가 보장을 위한 더 구체적인 선택자 */
+#selfCheckPage .self-check-logo-fixed .self-check-logo-icon-fixed .self-check-logo-circle-fixed {
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+}
+
+/* 최종 보장 - 모든 가능한 선택자 */
+div.self-check-logo-circle-fixed {
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+}
+
+/* 인라인 스타일보다 강력한 규칙 */
+[class*="self-check-logo-circle-fixed"] {
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+}
+
+.self-check-logo-text-fixed {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.self-check-brand-fixed {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.self-check-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.self-check-progress {
+    margin-bottom: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.self-check-progress .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.self-check-progress .progress {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    width: 16.67%; /* 1/6 */
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.self-check-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.check-step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.check-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.question-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.question-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.question-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* 가족상황 단계(step2)의 선택지는 세로 정렬 */
+#step2 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step2 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
+.option-buttons.multiple .option-btn {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    color: #475569;
+}
+
+.option-buttons.multiple .option-btn.selected {
+    background: #dbeafe;
+    border-color: #3b82f6;
+    color: #1e40af;
+}
+
+.option-btn {
+    padding: 10px 16px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+}
+
+.option-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn.selected {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.zipcode-input,
+.workplace-input {
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #374151;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.zipcode-input:focus,
+.workplace-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 결과 페이지 스타일 */
+.result-content {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.result-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    color: white;
+    font-size: 40px;
+}
+
+.result-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.result-score {
+    font-size: 24px;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 30px;
+}
+
+.result-details {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.result-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.action-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn.secondary {
+    background: #f8fafc;
+    color: #475569;
+    border: 2px solid #e2e8f0;
+}
+
+.action-btn.secondary:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+/* 네비게이션 버튼 */
+.self-check-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.nav-buttons-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.nav-btn:disabled {
+    background: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+.prev-btn {
+    background: linear-gradient(135deg, #64748b, #475569);
+    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+}
+
+.prev-btn:hover {
+    background: linear-gradient(135deg, #475569, #334155);
+    box-shadow: 0 6px 16px rgba(100, 116, 139, 0.4);
+}
+
+.next-btn {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.next-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.nav-btn .material-icons {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.nav-btn:hover .material-icons {
+    transform: scale(1.1);
+}
+
+.prev-btn:hover .material-icons {
+    transform: translateX(-2px) scale(1.1);
+}
+
+.next-btn:hover .material-icons {
+    transform: translateX(2px) scale(1.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .self-check-logo-fixed {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        min-height: 50px;
+        border-radius: 12px;
+    }
+    
+    .self-check-logo-wrapper-fixed {
+        gap: 6px;
+    }
+    
+    .self-check-logo-icon-fixed {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .self-check-brand-fixed {
+        font-size: 14px;
+    }
+    
+    .self-check-logo-main-fixed {
+        gap: 8px;
+        padding: 2px 0;
+    }
+    
+    .self-check-container {
+        padding: 15px;
+    }
+    
+    .self-check-content {
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .step-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .question-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .question-item {
+        padding: 15px;
+    }
+    
+    .question-label {
+        font-size: 14px;
+    }
+    
+    .option-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: 80px;
+    }
+    
+    .option-buttons {
+        gap: 8px;
+    }
+    
+    .result-title {
+        font-size: 24px;
+    }
+    
+    .result-score {
+        font-size: 18px;
+    }
+    
+    .action-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    .nav-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+    
+    .self-check-navigation {
+        padding: 0 10px;
+    }
+    
+    .nav-buttons-group {
+        gap: 8px;
+    }
+    
+    .nav-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    .nav-btn .material-icons {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .self-check-logo-fixed {
+        top: 10px;
+        left: 10px;
+        padding: 6px 8px;
+        min-height: 40px;
+        border-radius: 10px;
+    }
+    
+    .self-check-logo-wrapper-fixed {
+        gap: 4px;
+    }
+    
+    .self-check-logo-icon-fixed {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .self-check-brand-fixed {
+        font-size: 12px;
+    }
+    
+    .self-check-logo-main-fixed {
+        gap: 6px;
+        padding: 1px 0;
+    }
+    
+    .self-check-container {
+        padding: 10px;
+    }
+    
+    .self-check-navigation {
+        padding: 0 5px;
+    }
+    
+    .nav-buttons-group {
+        gap: 6px;
+    }
+    
+    .nav-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .nav-btn .material-icons {
+        font-size: 16px;
+    }
+    
+    .self-check-content {
+        padding: 15px;
+    }
+    
+    .question-item {
+        padding: 12px;
+    }
+    
+    .option-buttons {
+        flex-direction: column;
+    }
+    
+    .option-btn {
+        min-width: auto;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+/* 셀프체크 로고 강제 수정 - 파일 맨 끝에 추가 */
+.self-check-logo-circle-fixed {
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    animation: rotateLogo 20s linear infinite !important;
+}
+
+div[class*="self-check-logo-circle-fixed"] {
+    border-radius: 20px !important;
+    transform: rotate(45deg) !important;
+}
+
+/* 응답하지 않은 질문 표시 */
+.question-item.error {
+    border: 2px solid #ef4444;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fef2f2;
+    animation: shakeError 0.5s ease-in-out;
+}
+
+.question-item.error .question-label {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.question-item.error .question-label::after {
+    content: " *";
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.question-item.error .option-btn {
+    border-color: #fca5a5;
+    background: #fef2f2;
+}
+
+.question-item.error .option-btn:hover {
+    border-color: #ef4444;
+    background: #fee2e2;
+}
+
+/* 오류 알림 메시지 */
+.validation-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+    z-index: 10000;
+    display: none;
+    animation: slideInError 0.3s ease-out;
+    max-width: 400px;
+    text-align: center;
+}
+
+.validation-message.show {
+    display: block;
+}
+
+.validation-message .message-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.validation-message .message-text {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.validation-message .message-detail {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.validation-message .close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.validation-message .close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* 애니메이션 */
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes slideInError {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+        scale: 0.9;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+        scale: 1;
+    }
+}
+
+/* 오버레이 */
+.validation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.validation-overlay.show {
+    display: block;
+}

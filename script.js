@@ -475,3 +475,479 @@ document.addEventListener('visibilitychange', function() {
         questionCard.classList.add('fade-in');
     }
 });
+
+// ===========================
+// 셀프진단 페이지 관련 함수들
+// ===========================
+
+let selfCheckData = {};
+let currentStep = 1;
+const totalSteps = 6;
+
+// 셀프진단 페이지 표시
+function showSelfCheckPage() {
+    document.getElementById('selfCheckPage').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    initSelfCheck();
+}
+
+// 메인 페이지로 돌아가기
+function goBackToMain() {
+    document.getElementById('selfCheckPage').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+    resetSelfCheck();
+}
+
+// 셀프진단 초기화
+function initSelfCheck() {
+    currentStep = 1;
+    selfCheckData = {};
+    updateSelfCheckProgress();
+    showStep(1);
+    setupOptionButtons();
+    setupConditionalFields();
+}
+
+// 셀프진단 리셋
+function resetSelfCheck() {
+    currentStep = 1;
+    selfCheckData = {};
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    document.querySelectorAll('.zipcode-input, .workplace-input').forEach(input => {
+        input.value = '';
+    });
+}
+
+// 단계 표시
+function showStep(step) {
+    document.querySelectorAll('.check-step').forEach(stepEl => {
+        stepEl.classList.remove('active');
+    });
+    document.getElementById(`step${step}`).classList.add('active');
+    updateNavigationButtons();
+}
+
+// 진행률 업데이트
+function updateSelfCheckProgress() {
+    const progress = document.getElementById('selfCheckProgress');
+    const progressText = document.getElementById('selfCheckProgressText');
+    const percentage = (currentStep / totalSteps) * 100;
+    
+    progress.style.width = `${percentage}%`;
+    progressText.textContent = `${currentStep}단계 / ${totalSteps}단계`;
+}
+
+// 네비게이션 버튼 업데이트
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    // 이전 버튼
+    if (currentStep === 1) {
+        prevBtn.style.display = 'none';
+    } else {
+        prevBtn.style.display = 'flex';
+    }
+    
+    // 다음 버튼
+    if (currentStep === totalSteps) {
+        nextBtn.textContent = '진단 완료';
+        nextBtn.innerHTML = '진단 완료 <span class="material-icons">check</span>';
+    } else {
+        nextBtn.textContent = '다음';
+        nextBtn.innerHTML = '다음 <span class="material-icons">arrow_forward</span>';
+    }
+}
+
+// 옵션 버튼 설정
+function setupOptionButtons() {
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const questionItem = this.closest('.question-item');
+            const questionLabel = questionItem.querySelector('.question-label').textContent;
+            const isMultiple = this.closest('.option-buttons').classList.contains('multiple');
+            
+            if (isMultiple) {
+                // 다중 선택
+                this.classList.toggle('selected');
+                updateMultipleSelection(questionLabel, this.dataset.value);
+            } else {
+                // 단일 선택
+                questionItem.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selfCheckData[questionLabel] = this.dataset.value;
+            }
+            
+            // 조건부 필드 표시
+            handleConditionalFields(questionLabel, this.dataset.value);
+            
+            // 오류 상태 제거
+            questionItem.classList.remove('error');
+        });
+    });
+}
+
+// 다중 선택 업데이트
+function updateMultipleSelection(questionLabel, value) {
+    if (!selfCheckData[questionLabel]) {
+        selfCheckData[questionLabel] = [];
+    }
+    
+    const selectedValues = selfCheckData[questionLabel];
+    const index = selectedValues.indexOf(value);
+    
+    if (index > -1) {
+        selectedValues.splice(index, 1);
+    } else {
+        selectedValues.push(value);
+    }
+    
+    if (selectedValues.length === 0) {
+        delete selfCheckData[questionLabel];
+    }
+}
+
+// 조건부 필드 처리
+function setupConditionalFields() {
+    // 텍스트 입력 필드에 오류 상태 제거 기능 추가
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        input.addEventListener('input', function() {
+            const questionItem = this.closest('.question-item');
+            if (questionItem && this.value.trim()) {
+                questionItem.classList.remove('error');
+            }
+        });
+    });
+    
+    // 거주 형태에 따른 보증금/월세 금액 필드
+    const residenceButtons = document.querySelectorAll('#step3 .option-btn[data-value="rent"]');
+    residenceButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const rentAmountItem = document.getElementById('rentAmountItem');
+            if (this.classList.contains('selected')) {
+                rentAmountItem.style.display = 'block';
+            } else {
+                rentAmountItem.style.display = 'none';
+                rentAmountItem.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            }
+        });
+    });
+    
+    // 직장 유무에 따른 직장 주소 필드
+    const workplaceButtons = document.querySelectorAll('#step3 .option-btn[data-value="yes"]');
+    workplaceButtons.forEach(btn => {
+        if (btn.closest('.question-item').querySelector('.question-label').textContent === '직장 유무') {
+            btn.addEventListener('click', function() {
+                const workplaceItem = document.getElementById('workplaceItem');
+                if (this.classList.contains('selected')) {
+                    workplaceItem.style.display = 'block';
+                } else {
+                    workplaceItem.style.display = 'none';
+                    workplaceItem.querySelector('.workplace-input').value = '';
+                }
+            });
+        }
+    });
+    
+    // 담보부 채무 여부에 따른 담보부 채무 원금 필드
+    const securedDebtButtons = document.querySelectorAll('#step6 .option-btn[data-value="yes"]');
+    securedDebtButtons.forEach(btn => {
+        if (btn.closest('.question-item').querySelector('.question-label').textContent === '담보부 채무 여부') {
+            btn.addEventListener('click', function() {
+                const securedDebtItem = document.getElementById('securedDebtItem');
+                if (this.classList.contains('selected')) {
+                    securedDebtItem.style.display = 'block';
+                } else {
+                    securedDebtItem.style.display = 'none';
+                    securedDebtItem.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+                }
+            });
+        }
+    });
+}
+
+// 조건부 필드 처리
+function handleConditionalFields(questionLabel, value) {
+    if (questionLabel === '현재 거주 형태' && value === 'rent') {
+        document.getElementById('rentAmountItem').style.display = 'block';
+    } else if (questionLabel === '현재 거주 형태' && value !== 'rent') {
+        document.getElementById('rentAmountItem').style.display = 'none';
+    }
+    
+    if (questionLabel === '직장 유무' && value === 'yes') {
+        document.getElementById('workplaceItem').style.display = 'block';
+    } else if (questionLabel === '직장 유무' && value !== 'yes') {
+        document.getElementById('workplaceItem').style.display = 'none';
+    }
+    
+    if (questionLabel === '담보부 채무 여부' && value === 'yes') {
+        document.getElementById('securedDebtItem').style.display = 'block';
+    } else if (questionLabel === '담보부 채무 여부' && value !== 'yes') {
+        document.getElementById('securedDebtItem').style.display = 'none';
+    }
+}
+
+// 다음 단계
+function nextStep() {
+    if (currentStep < totalSteps) {
+        // 현재 단계의 필수 입력 검증
+        if (!validateCurrentStep()) {
+            return;
+        }
+        
+        // 입력 데이터 저장
+        saveCurrentStepData();
+        
+        currentStep++;
+        updateSelfCheckProgress();
+        showStep(currentStep);
+    } else {
+        // 진단 완료
+        completeSelfCheck();
+    }
+}
+
+// 이전 단계
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateSelfCheckProgress();
+        showStep(currentStep);
+    }
+}
+
+// 현재 단계 검증
+function validateCurrentStep() {
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    const requiredQuestions = currentStepEl.querySelectorAll('.question-item');
+    const unAnsweredQuestions = [];
+    
+    // 모든 오류 상태 초기화
+    requiredQuestions.forEach(question => {
+        question.classList.remove('error');
+    });
+    
+    for (let question of requiredQuestions) {
+        const questionLabel = question.querySelector('.question-label').textContent;
+        const optionButtons = question.querySelectorAll('.option-btn.selected');
+        const textInputs = question.querySelectorAll('input[type="text"]');
+        let isAnswered = false;
+        
+        // 옵션 버튼이 있는 경우
+        if (optionButtons.length > 0) {
+            isAnswered = optionButtons.length > 0;
+        }
+        
+        // 텍스트 입력이 있는 경우
+        if (textInputs.length > 0) {
+            for (let input of textInputs) {
+                if (input.style.display !== 'none' && input.value.trim()) {
+                    isAnswered = true;
+                    break;
+                }
+            }
+        }
+        
+        // 답변하지 않은 질문 표시
+        if (!isAnswered) {
+            question.classList.add('error');
+            unAnsweredQuestions.push(questionLabel);
+        }
+    }
+    
+    // 답변하지 않은 질문이 있으면 알림 표시
+    if (unAnsweredQuestions.length > 0) {
+        showValidationMessage(unAnsweredQuestions);
+        
+        // 첫 번째 오류 질문으로 스크롤
+        const firstErrorQuestion = currentStepEl.querySelector('.question-item.error');
+        if (firstErrorQuestion) {
+            firstErrorQuestion.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }
+        
+        return false;
+    }
+    
+    return true;
+}
+
+// 검증 메시지 표시
+function showValidationMessage(unAnsweredQuestions) {
+    const overlay = document.getElementById('validationOverlay');
+    const message = document.getElementById('validationMessage');
+    
+    // 메시지 내용 업데이트
+    const messageText = message.querySelector('.message-text');
+    const messageDetail = message.querySelector('.message-detail');
+    
+    if (unAnsweredQuestions.length === 1) {
+        messageText.textContent = `"${unAnsweredQuestions[0]}" 질문에 답변해주세요`;
+        messageDetail.textContent = '해당 질문을 선택해주세요';
+    } else {
+        messageText.textContent = `${unAnsweredQuestions.length}개의 질문에 답변이 필요합니다`;
+        messageDetail.textContent = `• ${unAnsweredQuestions.join('\n• ')}`;
+    }
+    
+    // 오버레이와 메시지 표시
+    overlay.classList.add('show');
+    message.classList.add('show');
+    
+    // 3초 후 자동으로 닫기
+    setTimeout(() => {
+        closeValidationMessage();
+    }, 3000);
+}
+
+// 검증 메시지 닫기
+function closeValidationMessage() {
+    const overlay = document.getElementById('validationOverlay');
+    const message = document.getElementById('validationMessage');
+    
+    overlay.classList.remove('show');
+    message.classList.remove('show');
+}
+
+// 현재 단계 데이터 저장
+function saveCurrentStepData() {
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    const questionItems = currentStepEl.querySelectorAll('.question-item');
+    
+    questionItems.forEach(item => {
+        const questionLabel = item.querySelector('.question-label').textContent;
+        const selectedButtons = item.querySelectorAll('.option-btn.selected');
+        const textInputs = item.querySelectorAll('input[type="text"]');
+        
+        // 선택된 옵션들 저장
+        if (selectedButtons.length > 0) {
+            if (selectedButtons.length === 1) {
+                selfCheckData[questionLabel] = selectedButtons[0].dataset.value;
+            } else {
+                selfCheckData[questionLabel] = Array.from(selectedButtons).map(btn => btn.dataset.value);
+            }
+        }
+        
+        // 텍스트 입력 저장
+        textInputs.forEach(input => {
+            if (input.value.trim()) {
+                selfCheckData[questionLabel] = input.value.trim();
+            }
+        });
+    });
+}
+
+// 셀프진단 완료
+function completeSelfCheck() {
+    // 마지막 단계 데이터 저장
+    saveCurrentStepData();
+    
+    // 점수 계산
+    const score = calculateScore();
+    const possibility = getPossibility(score);
+    
+    // 결과 표시
+    showResult(possibility, score);
+}
+
+// 점수 계산
+function calculateScore() {
+    let score = 0;
+    
+    // 기본 정보 점수
+    if (selfCheckData['나이'] === 'under-30') score += 10;
+    else if (selfCheckData['나이'] === '30-40') score += 15;
+    else if (selfCheckData['나이'] === '40-50') score += 20;
+    else if (selfCheckData['나이'] === 'over-50') score += 25;
+    
+    if (selfCheckData['장애인 여부'] === 'yes') score += 15;
+    if (selfCheckData['전세사기 피해자 여부'] === 'yes') score += 10;
+    
+    // 가족 상황 점수
+    if (selfCheckData['부모님 조건']) {
+        const parentConditions = Array.isArray(selfCheckData['부모님 조건']) ? 
+            selfCheckData['부모님 조건'] : [selfCheckData['부모님 조건']];
+        
+        if (parentConditions.includes('over-65')) score += 10;
+        if (parentConditions.includes('basic-income')) score += 15;
+        if (parentConditions.includes('disabled')) score += 10;
+    }
+    
+    if (selfCheckData['5년 내 법원으로부터 면책결정 유무'] === 'yes') score -= 20;
+    
+    // 수입 및 재산 점수
+    if (selfCheckData['월 평균 수입'] === 'under-200') score += 20;
+    else if (selfCheckData['월 평균 수입'] === '200-300') score += 15;
+    else if (selfCheckData['월 평균 수입'] === '300-400') score += 10;
+    else if (selfCheckData['월 평균 수입'] === '400-500') score += 5;
+    
+    if (selfCheckData['재산의 현재가치'] === 'under-1000') score += 15;
+    else if (selfCheckData['재산의 현재가치'] === '1000-3000') score += 10;
+    else if (selfCheckData['재산의 현재가치'] === '3000-5000') score += 5;
+    
+    // 채무 현황 점수
+    if (selfCheckData['채권자 수'] === '1-3') score += 10;
+    else if (selfCheckData['채권자 수'] === '4-6') score += 5;
+    else if (selfCheckData['채권자 수'] === '7-10') score -= 5;
+    else if (selfCheckData['채권자 수'] === 'over-10') score -= 15;
+    
+    if (selfCheckData['1년 내 채무 여부'] === 'yes') score -= 10;
+    if (selfCheckData['3개월 내 채무 여부'] === 'yes') score -= 15;
+    
+    // 채무 상세 점수
+    if (selfCheckData['담보부 채무 여부'] === 'yes') score -= 10;
+    
+    if (selfCheckData['모든 채무의 원금 합계'] === 'under-1000') score += 15;
+    else if (selfCheckData['모든 채무의 원금 합계'] === '1000-3000') score += 10;
+    else if (selfCheckData['모든 채무의 원금 합계'] === '3000-5000') score += 5;
+    else if (selfCheckData['모든 채무의 원금 합계'] === '5000-10000') score -= 5;
+    else if (selfCheckData['모든 채무의 원금 합계'] === 'over-10000') score -= 15;
+    
+    return Math.max(0, Math.min(100, score));
+}
+
+// 가능성 판정
+function getPossibility(score) {
+    if (score >= 70) return { level: '높음', color: '#10b981', description: '개인회생 신청이 유리한 상황입니다.' };
+    else if (score >= 40) return { level: '보통', color: '#f59e0b', description: '상담을 통해 구체적인 방안을 검토해보세요.' };
+    else return { level: '낮음', color: '#ef4444', description: '다른 채무 해결 방안을 고려해보세요.' };
+}
+
+// 결과 표시
+function showResult(possibility, score) {
+    // 결과 단계로 이동
+    document.querySelectorAll('.check-step').forEach(step => step.classList.remove('active'));
+    document.getElementById('resultStep').classList.add('active');
+    
+    // 결과 업데이트
+    document.getElementById('possibility').textContent = possibility.level;
+    document.getElementById('possibility').style.color = possibility.color;
+    
+    const resultDetails = document.getElementById('resultDetails');
+    resultDetails.innerHTML = `
+        <h3>진단 결과 상세</h3>
+        <p><strong>회생 가능성:</strong> ${possibility.level} (${score}점)</p>
+        <p><strong>권장사항:</strong> ${possibility.description}</p>
+        <div style="margin-top: 20px;">
+            <h4>다음 단계</h4>
+            <ul style="margin-left: 20px;">
+                <li>전문가와의 상담을 통해 구체적인 방안 검토</li>
+                <li>필요한 서류 준비 및 신청 절차 안내</li>
+                <li>개인회생 절차에 대한 상세 설명</li>
+            </ul>
+        </div>
+    `;
+    
+    // 네비게이션 버튼 숨기기
+    document.querySelector('.self-check-navigation').style.display = 'none';
+}
+
+// 셀프진단 다시 시작
+function restartSelfCheck() {
+    resetSelfCheck();
+    initSelfCheck();
+    document.querySelector('.self-check-navigation').style.display = 'flex';
+}
