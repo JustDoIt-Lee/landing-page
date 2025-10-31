@@ -404,7 +404,9 @@
         
         <!-- 검증 메시지 -->
         <div class="validation-message" id="validationMessage">
-            <span class="material-icons message-icon">warning</span>
+            <svg class="message-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L1 21H23L12 2ZM12 8V14M12 18H12.01" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <div class="message-text">응답하지 않은 질문이 있습니다</div>
             <div class="message-detail">모든 질문에 답변해주세요</div>
             <button class="close-btn" onclick="closeValidationMessage()">확인</button>
@@ -465,6 +467,13 @@
             </div>
             
             <div class="self-check-content">
+                <!-- 뒤로가기 버튼 -->
+                <button class="back-arrow-btn" id="backArrowBtn" onclick="prevStep()" style="display: none;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
                 <!-- 1단계: 기본 정보 -->
                 <div class="check-step active" id="step1">
                     <h2 class="step-title">기본 정보</h2>
@@ -701,28 +710,22 @@
                         <div class="result-details" id="resultDetails"></div>
                         <div class="result-actions">
                             <button class="action-btn primary" onclick="showConsultationForm()">
-                    <span class="material-icons">contact_support</span>
-                                전문가 상담 신청
+                                <span class="material-icons">contact_support</span>
+                                <span>전문가 상담 신청</span>
                             </button>
                             <button class="action-btn secondary" onclick="restartSelfCheck()">
                                 <span class="material-icons">refresh</span>
-                                다시 진단하기
+                                <span>다시 진단하기</span>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="self-check-navigation">
-                <div class="nav-buttons-group">
-                    <button class="nav-btn prev-btn" id="prevBtn" onclick="prevStep()" style="display: none;">
-                        <span class="material-icons">arrow_back_ios</span>
-                        이전
-                    </button>
+                
+                <!-- 다음 단계 버튼 (카드 내부 하단) -->
+                <div class="self-check-navigation">
                     <button class="nav-btn next-btn" id="nextBtn" onclick="nextStep()">
-                        다음
-                        <span class="material-icons">arrow_forward_ios</span>
-                </button>
+                        다음 단계로
+                    </button>
                 </div>
             </div>
         </div>

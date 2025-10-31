@@ -1,0 +1,374 @@
+/* ============================================
+   진단 단계 3단계 UI - CSS
+   ============================================ */
+
+/* 배경 */
+body {
+    background: linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 전체 컨테이너 */
+.self-check-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 진행률 표시 */
+.self-check-progress {
+    margin-bottom: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.self-check-progress .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.self-check-progress .progress {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    width: 50%; /* 3/6 */
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* 질문 박스 (메인 카드) */
+.self-check-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    padding-top: 70px;
+    padding-bottom: 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 0;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.self-check-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* 뒤로가기 버튼 */
+.back-arrow-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.back-arrow-btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.back-arrow-btn:active {
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(0.95);
+}
+
+.back-arrow-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: #1e293b;
+    transition: stroke 0.2s ease;
+}
+
+.back-arrow-btn:hover svg {
+    stroke: #0f172a;
+}
+
+/* 단계 제목 */
+.step-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* 질문 그룹 */
+.question-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    flex: 1;
+    overflow-y: auto;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.question-group::-webkit-scrollbar {
+    display: none;
+}
+
+/* 질문 아이템 (개별 질문 박스) */
+.question-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+/* 질문 레이블 */
+.question-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+/* 옵션 버튼 컨테이너 */
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* 옵션 버튼 (선택 버튼) */
+.option-btn {
+    padding: 10px 16px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 100px;
+    text-align: center;
+}
+
+.option-btn:hover {
+    background: #e2e8f0;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 선택된 옵션 버튼 */
+.option-btn.selected {
+    background: #f0f9ff;
+    border-color: #0ea5e9;
+    border-width: 2px;
+    color: #0369a1;
+    font-weight: 600;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 텍스트 입력 필드 */
+.zipcode-input,
+.workplace-input {
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #374151;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.zipcode-input:focus,
+.workplace-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.zipcode-input::placeholder,
+.workplace-input::placeholder {
+    color: #94a3b8;
+}
+
+/* 다음 단계 버튼 */
+.self-check-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 1px solid #f1f5f9;
+    z-index: 5;
+}
+
+.nav-btn {
+    width: 100%;
+    padding: 18px 24px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.nav-btn:hover {
+    background: #2563eb;
+}
+
+.nav-btn:active {
+    background: #1d4ed8;
+}
+
+.next-btn {
+    background: #3b82f6;
+}
+
+.next-btn:hover {
+    background: #2563eb;
+}
+
+/* 반응형 - 태블릿 (768px 이하) */
+@media (max-width: 768px) {
+    .self-check-container {
+        padding: 15px;
+    }
+    
+    .self-check-content {
+        padding: 20px;
+        padding-top: 60px;
+        padding-bottom: 0;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .back-arrow-btn {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-arrow-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .step-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .question-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .question-item {
+        padding: 15px;
+    }
+    
+    .question-label {
+        font-size: 14px;
+    }
+    
+    .option-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-width: 80px;
+    }
+    
+    .option-buttons {
+        gap: 8px;
+    }
+    
+    .zipcode-input,
+    .workplace-input {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+
+/* 반응형 - 모바일 (480px 이하) */
+@media (max-width: 480px) {
+    .self-check-container {
+        padding: 10px;
+    }
+    
+    .self-check-content {
+        padding-top: 60px;
+        padding-bottom: 0;
+        margin-bottom: 20px;
+    }
+    
+    .back-arrow-btn {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-arrow-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .option-buttons {
+        flex-direction: column;
+    }
+    
+    .option-btn {
+        min-width: auto;
+    }
+    
+    .zipcode-input,
+    .workplace-input {
+        padding: 12px 16px;
+        font-size: 16px; /* iOS 줌 방지 */
+    }
+}
+
+

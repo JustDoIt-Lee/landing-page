@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5단계: 채무 현황</title>
+    <link rel="stylesheet" href="step5-complete.css">
+</head>
+<body>
+    <!-- 진단 단계 5단계 UI - HTML -->
+    <div class="self-check-container">
+        <!-- 진행률 표시 -->
+        <div class="self-check-progress">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">5단계 / 6단계</div>
+        </div>
+        
+        <!-- 질문 박스 (메인 카드) -->
+        <div class="self-check-content">
+            <!-- 뒤로가기 버튼 -->
+            <button class="back-arrow-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <!-- 5단계: 채무 현황 -->
+            <div class="check-step active" id="step5">
+                <h2 class="step-title">채무 현황</h2>
+                <div class="question-group">
+                    <!-- 질문 1: 채권자 수 -->
+                    <div class="question-item">
+                        <label class="question-label">채권자 수</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="1-3">1-3개</button>
+                            <button class="option-btn" data-value="4-6">4-6개</button>
+                            <button class="option-btn" data-value="7-10">7-10개</button>
+                            <button class="option-btn" data-value="over-10">10개 이상</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 질문 2: 채무 사용처 (중복 선택 가능) -->
+                    <div class="question-item">
+                        <label class="question-label">채무 사용처 (중복 선택 가능)</label>
+                        <div class="option-buttons multiple">
+                            <button class="option-btn" data-value="living">생활비</button>
+                            <button class="option-btn" data-value="business">사업자금</button>
+                            <button class="option-btn" data-value="housing">주택구입</button>
+                            <button class="option-btn" data-value="education">교육비</button>
+                            <button class="option-btn" data-value="medical">의료비</button>
+                            <button class="option-btn" data-value="gambling">도박</button>
+                            <button class="option-btn" data-value="other">기타</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 질문 3: 1년 내 채무 여부 -->
+                    <div class="question-item">
+                        <label class="question-label">1년 내 채무 여부</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="yes">있음</button>
+                            <button class="option-btn" data-value="no">없음</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 질문 4: 3개월 내 채무 여부 -->
+                    <div class="question-item">
+                        <label class="question-label">3개월 내 채무 여부</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="yes">있음</button>
+                            <button class="option-btn" data-value="no">없음</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 다음 단계 버튼 -->
+                <div class="self-check-navigation">
+                    <button class="nav-btn next-btn">다음 단계로</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

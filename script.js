@@ -554,23 +554,21 @@ function updateSelfCheckProgress() {
 
 // 네비게이션 버튼 업데이트
 function updateNavigationButtons() {
-    const prevBtn = document.getElementById('prevBtn');
+    const backArrowBtn = document.getElementById('backArrowBtn');
     const nextBtn = document.getElementById('nextBtn');
     
-    // 이전 버튼
+    // 뒤로가기 버튼
     if (currentStep === 1) {
-        prevBtn.style.display = 'none';
+        if (backArrowBtn) backArrowBtn.style.display = 'none';
     } else {
-        prevBtn.style.display = 'flex';
+        if (backArrowBtn) backArrowBtn.style.display = 'flex';
     }
     
     // 다음 버튼
     if (currentStep === totalSteps) {
-        nextBtn.textContent = '진단 완료';
-        nextBtn.innerHTML = '진단 완료 <span class="material-icons">check</span>';
+        if (nextBtn) nextBtn.textContent = '진단 완료';
     } else {
-        nextBtn.textContent = '다음';
-        nextBtn.innerHTML = '다음 <span class="material-icons">arrow_forward</span>';
+        if (nextBtn) nextBtn.textContent = '다음 단계로';
     }
 }
 
@@ -800,10 +798,10 @@ function showValidationMessage(unAnsweredQuestions) {
     
     if (unAnsweredQuestions.length === 1) {
         messageText.textContent = `"${unAnsweredQuestions[0]}" 질문에 답변해주세요`;
-        messageDetail.textContent = '해당 질문을 선택해주세요';
+        messageDetail.innerHTML = '해당 질문을 선택해주세요';
     } else {
         messageText.textContent = `${unAnsweredQuestions.length}개의 질문에 답변이 필요합니다`;
-        messageDetail.textContent = `• ${unAnsweredQuestions.join('\n• ')}`;
+        messageDetail.innerHTML = unAnsweredQuestions.map(q => `<div class="question-list-item">• ${q}</div>`).join('');
     }
     
     // 오버레이와 메시지 표시

@@ -1,0 +1,235 @@
+/* ============================================
+   진단 단계 질문 박스 UI 사이즈 코드
+   ============================================ */
+
+/* ============================================
+   1. 전체 컨테이너
+   ============================================ */
+.self-check-container {
+    max-width: 1000px;        /* 최대 너비 1000px */
+    margin: 0 auto;           /* 중앙 정렬 */
+    padding: 20px;            /* 좌우 패딩 20px */
+    height: 100vh;            /* 전체 화면 높이 */
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ============================================
+   2. 질문 박스 (메인 카드)
+   ============================================ */
+.self-check-content {
+    background: white;
+    border-radius: 20px;     /* 둥근 모서리 20px */
+    padding: 30px;             /* 좌우 상하 패딩 30px */
+    padding-top: 70px;        /* 상단 패딩 70px (뒤로가기 버튼 공간) */
+    padding-bottom: 0;        /* 하단 패딩 0 */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 1;                  /* 남은 공간 차지 */
+    overflow-y: auto;         /* 세로 스크롤 가능 */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 0;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* ============================================
+   3. 단계 제목
+   ============================================ */
+.step-title {
+    font-size: 24px;          /* 폰트 크기 24px */
+    font-weight: 700;         /* 볼드 */
+    color: #1e293b;
+    margin-bottom: 20px;      /* 하단 마진 20px */
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   4. 질문 그룹 컨테이너
+   ============================================ */
+.question-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* 최소 너비 300px, 자동 맞춤 */
+    gap: 20px;                /* 항목 간 간격 20px */
+    flex: 1;
+    overflow-y: auto;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* ============================================
+   5. 질문 아이템 (개별 질문 박스)
+   ============================================ */
+.question-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                /* 내부 요소 간 간격 12px */
+    background: #f8fafc;
+    padding: 20px;            /* 내부 패딩 20px */
+    border-radius: 12px;      /* 둥근 모서리 12px */
+    border: 1px solid #e2e8f0; /* 테두리 1px */
+}
+
+/* ============================================
+   6. 질문 레이블
+   ============================================ */
+.question-label {
+    font-size: 16px;          /* 폰트 크기 16px */
+    font-weight: 600;         /* 세미 볼드 */
+    color: #374151;
+    margin-bottom: 8px;       /* 하단 마진 8px */
+}
+
+/* ============================================
+   7. 옵션 버튼 컨테이너
+   ============================================ */
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;                /* 버튼 간 간격 12px */
+}
+
+/* ============================================
+   8. 옵션 버튼 (개별 선택 버튼)
+   ============================================ */
+.option-btn {
+    padding: 10px 16px;       /* 상하 10px, 좌우 16px */
+    background: #f8fafc;
+    border: 2px solid #e2e8f0; /* 테두리 2px */
+    border-radius: 10px;      /* 둥근 모서리 10px */
+    color: #475569;
+    font-size: 13px;          /* 폰트 크기 13px */
+    font-weight: 500;         /* 미디엄 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;                  /* 자동으로 너비 조절 */
+    min-width: 100px;         /* 최소 너비 100px */
+    text-align: center;
+}
+
+/* ============================================
+   9. 선택된 옵션 버튼
+   ============================================ */
+.option-btn.selected {
+    background: #f0f9ff;      /* 하늘색 배경 */
+    border-color: #0ea5e9;    /* 하늘색 테두리 */
+    border-width: 2px;
+    color: #0369a1;           /* 진한 하늘색 텍스트 */
+    font-weight: 600;         /* 세미 볼드 */
+    transform: none;
+    box-shadow: none;
+}
+
+/* ============================================
+   10. 반응형 디자인 - 태블릿 (768px 이하)
+   ============================================ */
+@media (max-width: 768px) {
+    .self-check-container {
+        padding: 15px;         /* 좌우 패딩 15px로 감소 */
+    }
+    
+    .self-check-content {
+        padding: 20px;         /* 좌우 패딩 20px로 감소 */
+        padding-top: 60px;     /* 상단 패딩 60px로 감소 */
+        padding-bottom: 0;
+        border-radius: 16px;   /* 모서리 16px로 감소 */
+        margin-bottom: 20px;
+    }
+    
+    .step-title {
+        font-size: 20px;       /* 폰트 크기 20px로 감소 */
+        margin-bottom: 15px;
+    }
+    
+    .question-group {
+        grid-template-columns: 1fr; /* 1열로 변경 */
+        gap: 15px;            /* 간격 15px로 감소 */
+    }
+    
+    .question-item {
+        padding: 15px;        /* 패딩 15px로 감소 */
+    }
+    
+    .question-label {
+        font-size: 14px;      /* 폰트 크기 14px로 감소 */
+    }
+    
+    .option-btn {
+        padding: 8px 12px;    /* 패딩 8px 12px로 감소 */
+        font-size: 12px;      /* 폰트 크기 12px로 감소 */
+        min-width: 80px;      /* 최소 너비 80px로 감소 */
+    }
+    
+    .option-buttons {
+        gap: 8px;             /* 간격 8px로 감소 */
+    }
+}
+
+/* ============================================
+   11. 반응형 디자인 - 모바일 (480px 이하)
+   ============================================ */
+@media (max-width: 480px) {
+    .self-check-container {
+        padding: 10px;         /* 좌우 패딩 10px로 감소 */
+    }
+    
+    .self-check-content {
+        padding-top: 60px;
+        padding-bottom: 0;
+        margin-bottom: 20px;
+    }
+    
+    .question-item {
+        padding: 12px;        /* 패딩 12px로 감소 */
+    }
+    
+    .option-buttons {
+        flex-direction: column; /* 세로 배치 */
+    }
+    
+    .option-btn {
+        min-width: auto;      /* 최소 너비 제거 */
+    }
+}
+
+/* ============================================
+   주요 사이즈 요약
+   ============================================ */
+
+/*
+📦 전체 컨테이너
+- max-width: 1000px
+- padding: 20px
+
+📦 질문 박스 (메인 카드)
+- border-radius: 20px (데스크톱), 16px (모바일)
+- padding: 30px (데스크톱), 20px (태블릿), 15px (모바일)
+- padding-top: 70px (데스크톱), 60px (모바일)
+- padding-bottom: 0
+
+📦 질문 아이템 (개별 질문 박스)
+- padding: 20px (데스크톱), 15px (태블릿), 12px (모바일)
+- border-radius: 12px
+- border: 1px solid #e2e8f0
+- gap: 12px
+
+📦 질문 그룹
+- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+- gap: 20px (데스크톱), 15px (태블릿)
+- 모바일: 1열로 변경
+
+📦 옵션 버튼
+- padding: 10px 16px (데스크톱), 8px 12px (태블릿)
+- border-radius: 10px
+- min-width: 100px (데스크톱), 80px (태블릿)
+- gap: 12px (데스크톱), 8px (태블릿)
+*/
+
+

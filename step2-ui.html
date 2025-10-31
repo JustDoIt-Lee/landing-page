@@ -1,0 +1,54 @@
+<!-- 진단 단계 2단계 UI - HTML -->
+<div class="self-check-container">
+    <!-- 진행률 표시 -->
+    <div class="self-check-progress">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-text">2단계 / 6단계</div>
+    </div>
+    
+    <!-- 질문 박스 (메인 카드) -->
+    <div class="self-check-content">
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-arrow-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- 2단계: 가족 상황 -->
+        <div class="check-step active" id="step2">
+            <h2 class="step-title">가족 상황</h2>
+            <div class="question-group">
+                <!-- 질문 1: 부모님 조건 -->
+                <div class="question-item">
+                    <label class="question-label">부모님 조건 (중복 선택 가능)</label>
+                    <div class="option-buttons multiple">
+                        <button class="option-btn">친부모 모두 생존</button>
+                        <button class="option-btn">만 65세 이상</button>
+                        <button class="option-btn">기초수급자</button>
+                        <button class="option-btn">장애인</button>
+                        <button class="option-btn">해당없음</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 2: 면책결정 유무 -->
+                <div class="question-item">
+                    <label class="question-label">5년 내 법원으로부터 면책결정 유무</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">있음</button>
+                        <button class="option-btn">없음</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 다음 단계 버튼 -->
+            <div class="self-check-navigation">
+                <button class="nav-btn next-btn">다음 단계로</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

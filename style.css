@@ -3720,12 +3720,63 @@ div.self-check-logo-circle-fixed {
     background: white;
     border-radius: 20px;
     padding: 30px;
+    padding-top: 70px;
+    padding-bottom: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     flex: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    position: relative;
+    min-height: 0;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari 스크롤바 숨기기 */
+.self-check-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* 뒤로가기 버튼 (상단 왼쪽) */
+.back-arrow-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.back-arrow-btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.back-arrow-btn:active {
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(0.95);
+}
+
+.back-arrow-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: #1e293b;
+    transition: stroke 0.2s ease;
+}
+
+.back-arrow-btn:hover svg {
+    stroke: #0f172a;
 }
 
 .check-step {
@@ -3757,6 +3808,14 @@ div.self-check-logo-circle-fixed {
     gap: 20px;
     flex: 1;
     overflow-y: auto;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari 스크롤바 숨기기 */
+.question-group::-webkit-scrollbar {
+    display: none;
 }
 
 .question-item {
@@ -3796,6 +3855,48 @@ div.self-check-logo-circle-fixed {
     width: 100%;
 }
 
+/* 수입 및 재산 단계(step4)의 선택지는 세로 정렬 */
+#step4 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step4 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
+/* 채무 현황 단계(step5)의 선택지는 세로 정렬 */
+#step5 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step5 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
+/* 채무 상세 단계(step6)의 선택지는 세로 정렬 */
+#step6 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step6 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
 .option-buttons.multiple .option-btn {
     background: #f8fafc;
     border: 2px solid #e2e8f0;
@@ -3803,9 +3904,12 @@ div.self-check-logo-circle-fixed {
 }
 
 .option-buttons.multiple .option-btn.selected {
-    background: #dbeafe;
-    border-color: #3b82f6;
-    color: #1e40af;
+    background: #f0f9ff;
+    border-color: #0ea5e9;
+    border-width: 2px;
+    color: #0369a1;
+    font-weight: 600;
+    box-shadow: none;
 }
 
 .option-btn {
@@ -3825,16 +3929,18 @@ div.self-check-logo-circle-fixed {
 
 .option-btn:hover {
     background: #e2e8f0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: none;
+    box-shadow: none;
 }
 
 .option-btn.selected {
-    background: #3b82f6;
-    border-color: #3b82f6;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: #f0f9ff;
+    border-color: #0ea5e9;
+    border-width: 2px;
+    color: #0369a1;
+    font-weight: 600;
+    transform: none;
+    box-shadow: none;
 }
 
 .zipcode-input,
@@ -3860,7 +3966,11 @@ div.self-check-logo-circle-fixed {
 /* 결과 페이지 스타일 */
 .result-content {
     text-align: center;
-    padding: 40px 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
 }
 
 .result-icon {
@@ -3871,44 +3981,51 @@ div.self-check-logo-circle-fixed {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 30px;
+    margin: 0;
     color: white;
     font-size: 40px;
+    flex-shrink: 0;
 }
 
 .result-title {
     font-size: 32px;
     font-weight: 700;
     color: #1e293b;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .result-score {
     font-size: 24px;
     font-weight: 600;
     color: #3b82f6;
-    margin-bottom: 30px;
+    margin: 0;
 }
 
 .result-details {
     background: #f8fafc;
     border-radius: 16px;
     padding: 30px;
-    margin-bottom: 40px;
+    margin: 0;
     text-align: left;
+    width: 100%;
+    max-width: 600px;
 }
 
 .result-actions {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 8px;
+    width: 100%;
+    max-width: 600px;
 }
 
 .action-btn {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
     padding: 16px 32px;
     border-radius: 16px;
     font-size: 16px;
@@ -3916,10 +4033,24 @@ div.self-check-logo-circle-fixed {
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
+    position: relative;
+}
+
+.action-btn .material-icons {
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
 }
 
 .action-btn.primary {
     background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.action-btn.primary .material-icons {
     color: white;
 }
 
@@ -3929,14 +4060,20 @@ div.self-check-logo-circle-fixed {
 }
 
 .action-btn.secondary {
-    background: #f8fafc;
+    background: white;
     color: #475569;
     border: 2px solid #e2e8f0;
 }
 
+.action-btn.secondary .material-icons {
+    color: #475569;
+}
+
 .action-btn.secondary:hover {
-    background: #e2e8f0;
+    background: #f8fafc;
+    border-color: #cbd5e1;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* 네비게이션 버튼 */
@@ -3944,84 +4081,52 @@ div.self-check-logo-circle-fixed {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px 0;
     flex-shrink: 0;
-}
-
-.nav-buttons-group {
-    display: flex;
-    gap: 12px;
-    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 1px solid #f1f5f9;
+    z-index: 5;
 }
 
 .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 16px 32px;
+    width: 100%;
+    padding: 18px 24px;
     background: #3b82f6;
     color: white;
     border: none;
-    border-radius: 16px;
+    border-radius: 14px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .nav-btn:hover {
+    background: #2563eb;
+}
+
+.nav-btn:active {
     background: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
 .nav-btn:disabled {
     background: #e2e8f0;
     color: #94a3b8;
     cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-
-.prev-btn {
-    background: linear-gradient(135deg, #64748b, #475569);
-    box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
-}
-
-.prev-btn:hover {
-    background: linear-gradient(135deg, #475569, #334155);
-    box-shadow: 0 6px 16px rgba(100, 116, 139, 0.4);
 }
 
 .next-btn {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: #3b82f6;
 }
 
 .next-btn:hover {
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-}
-
-.nav-btn .material-icons {
-    font-size: 20px;
-    transition: transform 0.3s ease;
-}
-
-.nav-btn:hover .material-icons {
-    transform: scale(1.1);
-}
-
-.prev-btn:hover .material-icons {
-    transform: translateX(-2px) scale(1.1);
-}
-
-.next-btn:hover .material-icons {
-    transform: translateX(2px) scale(1.1);
+    background: #2563eb;
 }
 
 /* 반응형 디자인 */
@@ -4058,7 +4163,22 @@ div.self-check-logo-circle-fixed {
     
     .self-check-content {
         padding: 20px;
+        padding-top: 60px;
+        padding-bottom: 0;
         border-radius: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .back-arrow-btn {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-arrow-btn svg {
+        width: 22px;
+        height: 22px;
     }
     
     .step-title {
@@ -4156,8 +4276,26 @@ div.self-check-logo-circle-fixed {
         padding: 10px;
     }
     
+    .self-check-content {
+        padding-top: 60px;
+        padding-bottom: 0;
+        margin-bottom: 20px;
+    }
+    
+    .back-arrow-btn {
+        top: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .back-arrow-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+    
     .self-check-navigation {
-        padding: 0 5px;
+        padding: 0;
     }
     
     .nav-buttons-group {
@@ -4191,13 +4329,19 @@ div.self-check-logo-circle-fixed {
     
     .result-actions {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        gap: 12px;
     }
     
     .action-btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
         justify-content: center;
+        padding: 14px 24px;
+    }
+    
+    .action-btn .material-icons {
+        font-size: 20px;
     }
 }
 
@@ -4267,9 +4411,13 @@ div[class*="self-check-logo-circle-fixed"] {
 }
 
 .validation-message .message-icon {
-    font-size: 24px;
+    width: 24px;
+    height: 24px;
     margin-bottom: 10px;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
 }
 
 .validation-message .message-text {
@@ -4282,6 +4430,16 @@ div[class*="self-check-logo-circle-fixed"] {
     font-size: 14px;
     opacity: 0.9;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.validation-message .message-detail .question-list-item {
+    display: block;
+    line-height: 1.6;
 }
 
 .validation-message .close-btn {
@@ -4344,7 +4502,7 @@ div[class*="self-check-logo-circle-fixed"] {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(180deg, #E8F0FF 0%, #FDFEFF 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4354,10 +4512,30 @@ div[class*="self-check-logo-circle-fixed"] {
 
 .intro-content {
     text-align: center;
-    color: white;
-    max-width: 500px;
-    padding: 40px;
+    color: #1e293b;
+    max-width: 600px;
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 24px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.08),
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     animation: slideUpIntro 0.8s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
+    animation: subtleShimmer 8s infinite;
 }
 
 .intro-icon {
@@ -4367,35 +4545,39 @@ div[class*="self-check-logo-circle-fixed"] {
 .intro-circle {
     width: 80px;
     height: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 20px rgba(59, 130, 246, 0.2),
+        0 4px 8px rgba(59, 130, 246, 0.1);
     animation: pulseIntro 2s infinite;
+    transform: rotate(45deg);
 }
 
 .intro-circle .material-icons {
     font-size: 40px;
     color: white;
+    transform: rotate(-45deg);
 }
 
 .intro-title {
     font-size: 32px;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: #1e293b;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .intro-description {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 40px;
-    opacity: 0.9;
+    color: #64748b;
 }
 
 .intro-features {
@@ -4408,39 +4590,45 @@ div[class*="self-check-logo-circle-fixed"] {
 .feature-item {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     font-size: 16px;
     font-weight: 500;
-    opacity: 0.9;
+    color: #475569;
+    padding: 12px 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
 }
 
 .feature-item .material-icons {
     font-size: 20px;
-    color: #4ade80;
+    color: #3b82f6;
 }
 
 .intro-start-btn {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
     border: none;
     padding: 18px 40px;
-    border-radius: 50px;
+    border-radius: 14px;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 0 auto;
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     transition: all 0.3s ease;
-    animation: bounceIntro 2s infinite;
+    min-width: 200px;
+    justify-content: center;
 }
 
 .intro-start-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
-    background: linear-gradient(135deg, #2563eb, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
 
 .intro-start-btn:active {
@@ -4486,7 +4674,7 @@ div[class*="self-check-logo-circle-fixed"] {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
     }
 }
 
@@ -4495,34 +4683,7 @@ div[class*="self-check-logo-circle-fixed"] {
     .intro-content {
         padding: 30px 20px;
         max-width: 90%;
-    }
-    
-    .intro-title {
-        font-size: 28px;
-    }
-    
-    .intro-description {
-        font-size: 16px;
-    }
-    
-    .intro-circle {
-        width: 70px;
-        height: 70px;
-    }
-    
-    .intro-circle .material-icons {
-        font-size: 35px;
-    }
-    
-    .intro-start-btn {
-        padding: 16px 35px;
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .intro-content {
-        padding: 20px 15px;
+        margin: 20px;
     }
     
     .intro-title {
@@ -4530,7 +4691,16 @@ div[class*="self-check-logo-circle-fixed"] {
     }
     
     .intro-description {
-        font-size: 14px;
+        font-size: 16px;
+    }
+    
+    .intro-circle {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .intro-circle .material-icons {
+        font-size: 32px;
     }
     
     .intro-features {
@@ -4539,10 +4709,64 @@ div[class*="self-check-logo-circle-fixed"] {
     
     .feature-item {
         font-size: 14px;
+        padding: 10px 16px;
     }
     
     .intro-start-btn {
-        padding: 14px 30px;
+        padding: 16px 32px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-content {
+        padding: 25px 20px;
+        margin: 15px;
+        border-radius: 20px;
+    }
+    
+    .intro-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .intro-description {
+        font-size: 14px;
+        margin-bottom: 30px;
+    }
+    
+    .intro-icon {
+        margin-bottom: 20px;
+    }
+    
+    .intro-circle {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .intro-circle .material-icons {
+        font-size: 28px;
+    }
+    
+    .intro-features {
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    
+    .feature-item {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+    
+    .feature-item .material-icons {
+        font-size: 18px;
+    }
+    
+    .intro-start-btn {
+        padding: 14px 28px;
         font-size: 15px;
+        max-width: 100%;
     }
 }

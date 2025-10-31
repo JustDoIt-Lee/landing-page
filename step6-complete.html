@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6단계: 채무 상세</title>
+    <link rel="stylesheet" href="step6-complete.css">
+</head>
+<body>
+    <!-- 진단 단계 6단계 UI - HTML -->
+    <div class="self-check-container">
+        <!-- 진행률 표시 -->
+        <div class="self-check-progress">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="progress-text">6단계 / 6단계</div>
+        </div>
+        
+        <!-- 질문 박스 (메인 카드) -->
+        <div class="self-check-content">
+            <!-- 뒤로가기 버튼 -->
+            <button class="back-arrow-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <!-- 6단계: 채무 상세 -->
+            <div class="check-step active" id="step6">
+                <h2 class="step-title">채무 상세</h2>
+                <div class="question-group">
+                    <!-- 질문 1: 담보부 채무 여부 -->
+                    <div class="question-item">
+                        <label class="question-label">담보부 채무 여부</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="yes">있음</button>
+                            <button class="option-btn" data-value="no">없음</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 질문 2: 담보부 채무 원금 합계 -->
+                    <div class="question-item" id="securedDebtItem">
+                        <label class="question-label">담보부 채무 원금 합계</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="under-1000">1천만원 미만</button>
+                            <button class="option-btn" data-value="1000-3000">1천만원 ~ 3천만원</button>
+                            <button class="option-btn" data-value="3000-5000">3천만원 ~ 5천만원</button>
+                            <button class="option-btn" data-value="5000-10000">5천만원 ~ 1억원</button>
+                            <button class="option-btn" data-value="over-10000">1억원 이상</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 질문 3: 모든 채무의 원금 합계 -->
+                    <div class="question-item">
+                        <label class="question-label">모든 채무의 원금 합계</label>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-value="under-1000">1천만원 미만</button>
+                            <button class="option-btn" data-value="1000-3000">1천만원 ~ 3천만원</button>
+                            <button class="option-btn" data-value="3000-5000">3천만원 ~ 5천만원</button>
+                            <button class="option-btn" data-value="5000-10000">5천만원 ~ 1억원</button>
+                            <button class="option-btn" data-value="over-10000">1억원 이상</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 완료 버튼 -->
+                <div class="self-check-navigation">
+                    <button class="nav-btn next-btn">진단 완료</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

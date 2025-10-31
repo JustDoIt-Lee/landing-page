@@ -1,0 +1,75 @@
+<!-- 진단 단계 3단계 UI - HTML -->
+<div class="self-check-container">
+    <!-- 진행률 표시 -->
+    <div class="self-check-progress">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-text">3단계 / 6단계</div>
+    </div>
+    
+    <!-- 질문 박스 (메인 카드) -->
+    <div class="self-check-content">
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-arrow-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- 3단계: 거주 및 직장 -->
+        <div class="check-step active" id="step3">
+            <h2 class="step-title">거주 및 직장</h2>
+            <div class="question-group">
+                <!-- 질문 1: 현재 거주 형태 -->
+                <div class="question-item">
+                    <label class="question-label">현재 거주 형태</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">자가</button>
+                        <button class="option-btn">전세/월세</button>
+                        <button class="option-btn">가족과 동거</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 2: 보증금/월세 금액 (조건부 표시) -->
+                <div class="question-item" id="rentAmountItem">
+                    <label class="question-label">보증금/월세 금액</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">1천만원 미만</button>
+                        <button class="option-btn">1천만원 ~ 3천만원</button>
+                        <button class="option-btn">3천만원 ~ 5천만원</button>
+                        <button class="option-btn">5천만원 이상</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 3: 거주지 우편번호 -->
+                <div class="question-item">
+                    <label class="question-label">거주지 우편번호</label>
+                    <input type="text" class="zipcode-input" placeholder="예: 12345" maxlength="5">
+                </div>
+                
+                <!-- 질문 4: 직장 유무 -->
+                <div class="question-item">
+                    <label class="question-label">직장 유무</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">직장 있음</button>
+                        <button class="option-btn">직장 없음</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 5: 직장 주소 (조건부 표시) -->
+                <div class="question-item" id="workplaceItem">
+                    <label class="question-label">직장 주소</label>
+                    <input type="text" class="workplace-input" placeholder="직장 주소를 입력해주세요">
+                </div>
+            </div>
+            
+            <!-- 다음 단계 버튼 -->
+            <div class="self-check-navigation">
+                <button class="nav-btn next-btn">다음 단계로</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

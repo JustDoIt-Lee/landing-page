@@ -1,0 +1,80 @@
+<!-- 진단 단계 1단계 UI - HTML -->
+<div class="self-check-container">
+    <!-- 진행률 표시 -->
+    <div class="self-check-progress">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-text">1단계 / 6단계</div>
+    </div>
+    
+    <!-- 질문 박스 (메인 카드) -->
+    <div class="self-check-content">
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-arrow-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- 1단계: 기본 정보 -->
+        <div class="check-step active">
+            <h2 class="step-title">기본 정보</h2>
+            <div class="question-group">
+                <!-- 질문 1: 결혼 여부 -->
+                <div class="question-item">
+                    <label class="question-label">결혼 여부</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">기혼</button>
+                        <button class="option-btn">미혼</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 2: 자녀 여부 -->
+                <div class="question-item">
+                    <label class="question-label">자녀 여부</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">있음</button>
+                        <button class="option-btn">없음</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 3: 나이 -->
+                <div class="question-item">
+                    <label class="question-label">나이</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">30세 미만</button>
+                        <button class="option-btn">30-40세</button>
+                        <button class="option-btn">40-50세</button>
+                        <button class="option-btn">50세 이상</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 4: 장애인 여부 -->
+                <div class="question-item">
+                    <label class="question-label">장애인 여부</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">장애인</button>
+                        <button class="option-btn">비장애인</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 5: 전세사기 피해자 여부 -->
+                <div class="question-item">
+                    <label class="question-label">전세사기 피해자 여부</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">피해자</button>
+                        <button class="option-btn">해당없음</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 다음 단계 버튼 -->
+            <div class="self-check-navigation">
+                <button class="nav-btn next-btn">다음 단계로</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

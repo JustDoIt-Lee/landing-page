@@ -1,0 +1,57 @@
+<!-- 진단 단계 4단계 UI - HTML -->
+<div class="self-check-container">
+    <!-- 진행률 표시 -->
+    <div class="self-check-progress">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-text">4단계 / 6단계</div>
+    </div>
+    
+    <!-- 질문 박스 (메인 카드) -->
+    <div class="self-check-content">
+        <!-- 뒤로가기 버튼 -->
+        <button class="back-arrow-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- 4단계: 수입 및 재산 -->
+        <div class="check-step active" id="step4">
+            <h2 class="step-title">수입 및 재산</h2>
+            <div class="question-group">
+                <!-- 질문 1: 월 평균 수입 -->
+                <div class="question-item">
+                    <label class="question-label">월 평균 수입</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">200만원 미만</button>
+                        <button class="option-btn">200-300만원</button>
+                        <button class="option-btn">300-400만원</button>
+                        <button class="option-btn">400-500만원</button>
+                        <button class="option-btn">500만원 이상</button>
+                    </div>
+                </div>
+                
+                <!-- 질문 2: 재산의 현재가치 -->
+                <div class="question-item">
+                    <label class="question-label">재산의 현재가치</label>
+                    <div class="option-buttons">
+                        <button class="option-btn">1천만원 미만</button>
+                        <button class="option-btn">1천만원 ~ 3천만원</button>
+                        <button class="option-btn">3천만원 ~ 5천만원</button>
+                        <button class="option-btn">5천만원 ~ 1억원</button>
+                        <button class="option-btn">1억원 이상</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 다음 단계 버튼 -->
+            <div class="self-check-navigation">
+                <button class="nav-btn next-btn">다음 단계로</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
