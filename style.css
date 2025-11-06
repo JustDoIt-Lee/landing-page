@@ -3841,7 +3841,21 @@ div.self-check-logo-circle-fixed {
     gap: 12px;
 }
 
-/* 가족상황 단계(step2)의 선택지는 세로 정렬 */
+/* 기본 정보 단계(step1)의 선택지는 세로 정렬 */
+#step1 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step1 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
+/* 거주 및 직장 단계(step2)의 선택지는 세로 정렬 */
 #step2 .option-buttons {
     display: flex;
     flex-direction: column;
@@ -3855,7 +3869,21 @@ div.self-check-logo-circle-fixed {
     width: 100%;
 }
 
-/* 수입 및 재산 단계(step4)의 선택지는 세로 정렬 */
+/* 수입 및 재산 단계(step3)의 선택지는 세로 정렬 */
+#step3 .option-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+#step3 .option-btn {
+    flex: none;
+    min-width: auto;
+    width: 100%;
+}
+
+/* 채무 현황 단계(step4)의 선택지는 세로 정렬 */
 #step4 .option-buttons {
     display: flex;
     flex-direction: column;
@@ -3869,7 +3897,7 @@ div.self-check-logo-circle-fixed {
     width: 100%;
 }
 
-/* 채무 현황 단계(step5)의 선택지는 세로 정렬 */
+/* 채무 상세 단계(step5)의 선택지는 세로 정렬 */
 #step5 .option-buttons {
     display: flex;
     flex-direction: column;
@@ -3878,20 +3906,6 @@ div.self-check-logo-circle-fixed {
 }
 
 #step5 .option-btn {
-    flex: none;
-    min-width: auto;
-    width: 100%;
-}
-
-/* 채무 상세 단계(step6)의 선택지는 세로 정렬 */
-#step6 .option-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-wrap: nowrap;
-}
-
-#step6 .option-btn {
     flex: none;
     min-width: auto;
     width: 100%;

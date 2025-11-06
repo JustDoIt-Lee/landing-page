@@ -482,7 +482,7 @@ document.addEventListener('visibilitychange', function() {
 
 let selfCheckData = {};
 let currentStep = 1;
-const totalSteps = 6;
+const totalSteps = 5;
 
 // 셀프진단 페이지 표시
 function showSelfCheckPage() {
@@ -633,7 +633,7 @@ function setupConditionalFields() {
     });
     
     // 거주 형태에 따른 보증금/월세 금액 필드
-    const residenceButtons = document.querySelectorAll('#step3 .option-btn[data-value="rent"]');
+    const residenceButtons = document.querySelectorAll('#step2 .option-btn[data-value="rent"]');
     residenceButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             const rentAmountItem = document.getElementById('rentAmountItem');
@@ -647,7 +647,7 @@ function setupConditionalFields() {
     });
     
     // 직장 유무에 따른 직장 주소 필드
-    const workplaceButtons = document.querySelectorAll('#step3 .option-btn[data-value="yes"]');
+    const workplaceButtons = document.querySelectorAll('#step2 .option-btn[data-value="yes"]');
     workplaceButtons.forEach(btn => {
         if (btn.closest('.question-item').querySelector('.question-label').textContent === '직장 유무') {
             btn.addEventListener('click', function() {
@@ -663,7 +663,7 @@ function setupConditionalFields() {
     });
     
     // 담보부 채무 여부에 따른 담보부 채무 원금 필드
-    const securedDebtButtons = document.querySelectorAll('#step6 .option-btn[data-value="yes"]');
+    const securedDebtButtons = document.querySelectorAll('#step5 .option-btn[data-value="yes"]');
     securedDebtButtons.forEach(btn => {
         if (btn.closest('.question-item').querySelector('.question-label').textContent === '담보부 채무 여부') {
             btn.addEventListener('click', function() {
